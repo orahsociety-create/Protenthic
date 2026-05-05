@@ -211,7 +211,10 @@
           {% endpaginate %}
       -->
       <section class="nx-all__grid" id="nx-products-grid" aria-label="Listado de productos">
-        <p class="nx-all__status" id="nx-products-status" style="display:none;"></p>
+        <div class="nx-all__loading" id="nx-products-loading" aria-live="polite" aria-busy="true" aria-label="Cargando">
+          <span class="nx-all__loading-dots" aria-hidden="true"><span></span><span></span><span></span></span>
+        </div>
+        <p class="nx-all__status" id="nx-products-status" style="display:none;" hidden></p>
       </section>
     </main>
 
@@ -554,6 +557,58 @@
         margin-left: auto;
         margin-right: auto;
         line-height: 1.5;
+      }
+
+      .nx-all__loading {
+        grid-column: 1 / -1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: clamp(36px, 8vw, 72px) 8px clamp(28px, 5vw, 48px);
+        min-height: 100px;
+      }
+
+      .nx-all__loading-dots {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+      }
+
+      .nx-all__loading-dots > span {
+        display: block;
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background: rgba(10, 10, 18, 0.22);
+        animation: nx-all-dot 1.15s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite both;
+      }
+
+      .nx-all__loading-dots > span:nth-child(2) {
+        animation-delay: 0.14s;
+      }
+
+      .nx-all__loading-dots > span:nth-child(3) {
+        animation-delay: 0.28s;
+      }
+
+      @keyframes nx-all-dot {
+        0%,
+        75%,
+        100% {
+          opacity: 0.35;
+          transform: translateY(0) scale(1);
+        }
+        37% {
+          opacity: 1;
+          transform: translateY(-5px) scale(1.05);
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .nx-all__loading-dots > span {
+          animation: none;
+          opacity: 0.5;
+        }
       }
 
       .nx-ap-card {
@@ -1404,6 +1459,18 @@
       (async function nxLoadShopifyProducts() {
         const grid = document.getElementById("nx-products-grid");
         const status = document.getElementById("nx-products-status");
+
+        function dismissProductsLoading() {
+          document.getElementById("nx-products-loading")?.remove();
+        }
+
+        /** Muestra el párrafo de errores/aviso y quita estado hidden inicial. */
+        function showStatusParagraph() {
+          if (!status) return;
+          status.hidden = false;
+          status.style.removeProperty("display");
+        }
+
         try {
           await NxShopify.ready();
           const params = new URLSearchParams(window.location.search || "");
@@ -1413,8 +1480,9 @@
           if (collectionHandle) {
             const col = await NxShopify.fetchCollectionByHandle(collectionHandle, 250);
             if (!col) {
+              dismissProductsLoading();
               if (status) {
-                status.style.removeProperty("display");
+                showStatusParagraph();
                 status.textContent =
                   "No aparece esta colección en la Storefront API (handle: \"" +
                   collectionHandle +
@@ -1431,7 +1499,8 @@
               }
               products = col.products || [];
               if (products.length === 0 && status) {
-                status.style.removeProperty("display");
+                dismissProductsLoading();
+                showStatusParagraph();
                 status.textContent =
                   "La colección «" +
                   (col.title || collectionHandle) +
@@ -1446,27 +1515,31 @@
           if (products.length === 0) {
             if (status) {
               const isCollection = Boolean(collectionHandle);
-              const alreadyCustom = status.textContent && !/^Cargando/.test(status.textContent);
+              const alreadyCustom = !!(status.textContent && String(status.textContent).trim());
               if (alreadyCustom && isCollection) {
                 /* mensaje ya definido arriba (colección inexistente o vacía) */
               } else if (!isCollection) {
-                status.style.removeProperty("display");
+                dismissProductsLoading();
+                showStatusParagraph();
                 status.textContent =
                   "La tienda respondió bien, pero no hay productos en el catálogo para esta vitrina (Storefront API). " +
                   "Admin → Productos → abre un producto → Publicación en canales de venta → activa Headless (PROTHENTIC / el canal del token). " +
                   "Repite con todos los que quieras vender y recarga. También abre esta página con npm run dev (http://127.0.0.1:…), no como archivo del disco.";
                 status.classList.add("nx-all__status--hint");
               }
+              if (alreadyCustom && isCollection) dismissProductsLoading();
             }
           } else {
+            dismissProductsLoading();
             if (status) status.remove();
             for (const pr of products) {
               grid.appendChild(nxBuildProductCard(pr));
             }
           }
         } catch (e) {
+          dismissProductsLoading();
           if (status) {
-            status.style.removeProperty("display");
+            showStatusParagraph();
             status.textContent =
               "No se pudieron cargar los productos. Revisa el token en .env, ejecuta npm run dev y abre esta URL en el navegador (http://127.0.0.1:5173/…). " +
               (e && e.message ? "(" + e.message + ")" : "");
