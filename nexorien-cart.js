@@ -425,6 +425,9 @@
       .then(() => render(cart, {}))
       .catch(() => {});
     render(cart, {});
+    try {
+      d.dispatchEvent(new CustomEvent("nexorien:cartupdated", { detail: { cart } }));
+    } catch (_) {}
     return cart;
   }
 

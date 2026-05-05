@@ -1971,6 +1971,10 @@
       .nx-rec[aria-hidden="false"] {
         display: flex;
       }
+      /* Oculta la barra aunque el CTA principal esté fuera de vista si ya está en el carrito */
+      .nx-rec.nx-rec--in-cart-suppressed {
+        display: none !important;
+      }
       .nx-rec__inner {
         display: grid;
         grid-template-columns: 54px 1fr auto;
@@ -2689,6 +2693,7 @@
           // Al cambiar variante, reinicia al primer frame para que concuerde con la imagen principal del sabor.
           renderGallery(Number(e.target.value), { keepIndex: false });
           syncBuyState();
+          syncRecBarCartState();
         });
         renderGallery(0);
         placeThumbsBelowCrumbsOnMobile();
@@ -2718,6 +2723,7 @@
                 if (b) b.disabled = false;
               });
               syncBuyState();
+              syncRecBarCartState();
             }
             return;
           }
@@ -2981,21 +2987,68 @@
         if (recStars) recStars.textContent = "★★★★★".slice(0, full) + "☆☆☆☆☆".slice(0, 5 - full);
         if (recRev) recRev.textContent = `${p.reviewsCount || 0} reseñas`;
 
+        /** Barra inferior: sólo visible si el CTA está fuera de vista y la variante no está ya en el carrito. */
+        let recStickyReveal = false;
+        let recVariantInCart = false;
+
+        function applyRecBarDisplay() {
+          if (!recBar) return;
+          if (recVariantInCart && fromShopify) {
+            recBar.classList.add("nx-rec--in-cart-suppressed");
+            recBar.setAttribute("aria-hidden", "true");
+            return;
+          }
+          recBar.classList.remove("nx-rec--in-cart-suppressed");
+          recBar.setAttribute("aria-hidden", recStickyReveal ? "false" : "true");
+        }
+
+        async function syncRecBarCartState() {
+          if (!fromShopify) {
+            recVariantInCart = false;
+            applyRecBarDisplay();
+            return;
+          }
+          const idx = Number(flavor.value || 0);
+          const vSel = p.variants[idx] || p.variants[0];
+          const vid = vSel?.id;
+          if (!vid) {
+            recVariantInCart = false;
+            applyRecBarDisplay();
+            return;
+          }
+          try {
+            await NxShopify.ready();
+            const cart = await NxShopify.getCart();
+            const edges = cart?.lines?.edges || [];
+            recVariantInCart = edges.some(
+              (e) => String(e?.node?.merchandise?.id || "") === String(vid),
+            );
+          } catch {
+            recVariantInCart = false;
+          }
+          applyRecBarDisplay();
+        }
+
+        document.addEventListener("nexorien:cartupdated", () => {
+          syncRecBarCartState();
+        });
+
         if (addToCart && recBar) {
           const obs = new IntersectionObserver(
             (entries) => {
               const entry = entries[0];
-              const show = entry ? entry.isIntersecting === false : false;
-              recBar.setAttribute("aria-hidden", show ? "false" : "true");
+              recStickyReveal = entry ? entry.isIntersecting === false : false;
+              applyRecBarDisplay();
             },
             {
               threshold: 0,
-              // show a bit after the button is truly gone
               rootMargin: "-12px 0px 0px 0px",
-            }
+            },
           );
           obs.observe(addToCart);
         }
+
+        syncRecBarCartState();
 
         // Video section (separate)
         const videoPoster = document.getElementById("p-video-poster");
