@@ -260,6 +260,46 @@
     }
   `;
 
+  const SEARCH_PRODUCTS_QUERY = `
+    query NexorienSearchProducts($query: String!, $first: Int!) {
+      search(query: $query, first: $first, types: [PRODUCT]) {
+        edges {
+          node {
+            ... on Product {
+              id
+              handle
+              title
+              category { name }
+              collections(first: 5) {
+                edges {
+                  node { handle title }
+                }
+              }
+              featuredImage { url altText }
+              availableForSale
+              priceRange { minVariantPrice { amount currencyCode } }
+              compareAtPriceRange { minVariantPrice { amount currencyCode } }
+              options { name values }
+              variants(first: 25) {
+                edges {
+                  node {
+                    id
+                    title
+                    availableForSale
+                    price { amount currencyCode }
+                    compareAtPrice { amount currencyCode }
+                    image { url altText }
+                    selectedOptions { name value }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  `;
+
   const CART_CREATE = `
     mutation NexorienCartCreate {
       cartCreate {
@@ -347,6 +387,20 @@
       storefrontCollections: nodes.map((n) => ({ handle: n.handle, title: n.title })),
       missingExpectedHandles,
     };
+  }
+
+  async function searchProducts(query, maxItems) {
+    const q = String(query || "").trim();
+    if (!q) return [];
+    const first = Math.max(1, Math.min(maxItems ?? 20, 50));
+    const data = await graphql(SEARCH_PRODUCTS_QUERY, { query: q, first });
+    const edges = data?.search?.edges || [];
+    const out = [];
+    for (const e of edges) {
+      const node = e?.node;
+      if (node && node.handle) out.push(normalizeProductCard(node));
+    }
+    return out;
   }
 
   async function fetchProductsPage(first, after) {
@@ -601,6 +655,7 @@
     fetchCollectionByHandle,
     fetchCollectionsList,
     diagnoseNavCategoryMismatch,
+    searchProducts,
     NAV_CATEGORY_COLLECTION_HANDLES,
     addVariantToCart,
     getCart,
