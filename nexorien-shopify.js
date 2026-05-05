@@ -624,6 +624,12 @@
       throw new Error(msg);
     }
     const cart = data.cartLinesAdd?.cart;
+
+    // Si hay sesión activa, asociar cliente al carrito
+    if (isLoggedIn()) {
+      await associateCustomerToCart();
+    }
+
     return { checkoutUrl: cart?.checkoutUrl || "", cartId: cart?.id || cartId };
   }
 
@@ -644,6 +650,37 @@
     const errs = data.cartLinesRemove?.userErrors || [];
     if (errs.length) throw new Error(errs.map((e) => e.message).join("; "));
     return data.cartLinesRemove?.cart || null;
+  }
+
+  // =============================================
+  // CART ↔ CUSTOMER — Asociar cliente al carrito
+  // =============================================
+
+  const CART_BUYER_IDENTITY_UPDATE = `
+    mutation cartBuyerIdentityUpdate($cartId: ID!, $buyerIdentity: CartBuyerIdentityInput!) {
+      cartBuyerIdentityUpdate(cartId: $cartId, buyerIdentity: $buyerIdentity) {
+        cart { id checkoutUrl }
+        userErrors { field message }
+      }
+    }
+  `;
+
+  async function associateCustomerToCart() {
+    const token = getCustomerToken();
+    const cartId = getCartId();
+    if (!token || !cartId) return null;
+    try {
+      const data = await graphql(CART_BUYER_IDENTITY_UPDATE, {
+        cartId,
+        buyerIdentity: { customerAccessToken: token },
+      });
+      const errs = data.cartBuyerIdentityUpdate?.userErrors || [];
+      if (errs.length) console.warn("[NxShopify] buyerIdentity error:", errs[0].message);
+      return data.cartBuyerIdentityUpdate?.cart || null;
+    } catch (e) {
+      console.warn("[NxShopify] No se pudo asociar cliente al carrito:", e.message);
+      return null;
+    }
   }
 
   // =============================================
@@ -956,6 +993,7 @@
     getCustomer,
     customerUpdate,
     getCustomerToken,
+    associateCustomerToCart,
     customerAddressCreate,
     customerAddressUpdate,
     customerAddressDelete,
