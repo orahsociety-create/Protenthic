@@ -211,7 +211,7 @@
           {% endpaginate %}
       -->
       <section class="nx-all__grid" id="nx-products-grid" aria-label="Listado de productos">
-        <p class="nx-all__status" id="nx-products-status">Cargando productos desde Shopify…</p>
+        <p class="nx-all__status" id="nx-products-status" style="display:none;"></p>
       </section>
     </main>
 
@@ -1414,6 +1414,7 @@
             const col = await NxShopify.fetchCollectionByHandle(collectionHandle, 250);
             if (!col) {
               if (status) {
+                status.style.removeProperty("display");
                 status.textContent =
                   "No aparece esta colección en la Storefront API (handle: \"" +
                   collectionHandle +
@@ -1430,6 +1431,7 @@
               }
               products = col.products || [];
               if (products.length === 0 && status) {
+                status.style.removeProperty("display");
                 status.textContent =
                   "La colección «" +
                   (col.title || collectionHandle) +
@@ -1448,6 +1450,7 @@
               if (alreadyCustom && isCollection) {
                 /* mensaje ya definido arriba (colección inexistente o vacía) */
               } else if (!isCollection) {
+                status.style.removeProperty("display");
                 status.textContent =
                   "La tienda respondió bien, pero no hay productos en el catálogo para esta vitrina (Storefront API). " +
                   "Admin → Productos → abre un producto → Publicación en canales de venta → activa Headless (PROTHENTIC / el canal del token). " +
@@ -1463,6 +1466,7 @@
           }
         } catch (e) {
           if (status) {
+            status.style.removeProperty("display");
             status.textContent =
               "No se pudieron cargar los productos. Revisa el token en .env, ejecuta npm run dev y abre esta URL en el navegador (http://127.0.0.1:5173/…). " +
               (e && e.message ? "(" + e.message + ")" : "");
