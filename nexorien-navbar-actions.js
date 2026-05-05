@@ -1,5 +1,5 @@
 /**
- * Acciones del navbar: búsqueda (Storefront API search) y enlace a cuenta Shopify.
+ * Acciones del navbar: búsqueda (Storefront API search) y enlace a Mi cuenta (/cuenta.html).
  * Carga después de nexorien-shopify.js y nexorien-cart.js.
  */
 (function (global) {
@@ -33,13 +33,6 @@
       "#nx-search-overlay .nx-so-name{font-weight:800;font-size:14px;line-height:1.25;}" +
       "#nx-search-overlay .nx-so-price{font-size:13px;color:rgba(10,10,10,0.55);margin-top:2px;}";
     document.head.appendChild(s);
-  }
-
-  function customerAccountLoginUrl() {
-    const c = global.NxShopify?.getConfigSync?.();
-    const d = String(c?.storeDomain || "").trim().replace(/^https?:\/\//, "");
-    if (!d) return "";
-    return `https://${d}/account/login`;
   }
 
   function ensureOverlay() {
@@ -179,18 +172,8 @@
 
   function bindAccountButtons() {
     document.querySelectorAll('button.nx-icon[aria-label="Cuenta"]').forEach((btn) => {
-      btn.addEventListener("click", async () => {
-        try {
-          await global.NxShopify?.ready?.();
-        } catch (_) {}
-        const url = customerAccountLoginUrl();
-        if (url) {
-          global.location.href = url;
-          return;
-        }
-        alert(
-          "No hay dominio de tienda configurado. Añade SHOPIFY_STORE_DOMAIN=tu-tienda.myshopify.com en .env y recarga con npm run dev."
-        );
+      btn.addEventListener("click", () => {
+        global.location.href = "/cuenta.html";
       });
     });
   }

@@ -646,6 +646,290 @@
     return data.cartLinesRemove?.cart || null;
   }
 
+  // =============================================
+  // CUSTOMER / MI CUENTA — Shopify Storefront API
+  // =============================================
+
+  const CUSTOMER_TOKEN_KEY = "nexorien_customer_token";
+
+  const CUSTOMER_CREATE = `
+    mutation customerCreate($input: CustomerCreateInput!) {
+      customerCreate(input: $input) {
+        customer { id firstName lastName email }
+        customerUserErrors { field message code }
+      }
+    }
+  `;
+
+  const CUSTOMER_LOGIN = `
+    mutation customerAccessTokenCreate($input: CustomerAccessTokenCreateInput!) {
+      customerAccessTokenCreate(input: $input) {
+        customerAccessToken { accessToken expiresAt }
+        customerUserErrors { field message code }
+      }
+    }
+  `;
+
+  const CUSTOMER_LOGOUT = `
+    mutation customerAccessTokenDelete($customerAccessToken: String!) {
+      customerAccessTokenDelete(customerAccessToken: $customerAccessToken) {
+        deletedAccessToken
+        userErrors { field message }
+      }
+    }
+  `;
+
+  const CUSTOMER_RECOVER = `
+    mutation customerRecover($email: String!) {
+      customerRecover(email: $email) {
+        customerUserErrors { field message code }
+      }
+    }
+  `;
+
+  const CUSTOMER_QUERY = `
+    query customer($customerAccessToken: String!) {
+      customer(customerAccessToken: $customerAccessToken) {
+        id firstName lastName email phone
+        defaultAddress { id address1 address2 city province country zip firstName lastName phone }
+        addresses(first: 10) {
+          edges { node { id address1 address2 city province country zip firstName lastName phone } }
+        }
+        orders(first: 20, sortKey: PROCESSED_AT, reverse: true) {
+          edges {
+            node {
+              id orderNumber name processedAt
+              financialStatus fulfillmentStatus
+              totalPrice { amount currencyCode }
+              lineItems(first: 20) {
+                edges {
+                  node {
+                    title quantity
+                    variant {
+                      image { url altText }
+                      price { amount currencyCode }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  `;
+
+  const CUSTOMER_UPDATE = `
+    mutation customerUpdate($customerAccessToken: String!, $customer: CustomerUpdateInput!) {
+      customerUpdate(customerAccessToken: $customerAccessToken, customer: $customer) {
+        customer { id firstName lastName email phone }
+        customerUserErrors { field message code }
+      }
+    }
+  `;
+
+  const CUSTOMER_ADDRESS_CREATE = `
+    mutation customerAddressCreate($customerAccessToken: String!, $address: MailingAddressInput!) {
+      customerAddressCreate(customerAccessToken: $customerAccessToken, address: $address) {
+        customerAddress {
+          id address1 address2 city province zip country phone firstName lastName
+        }
+        customerUserErrors { field message code }
+      }
+    }
+  `;
+
+  const CUSTOMER_ADDRESS_UPDATE = `
+    mutation customerAddressUpdate($customerAccessToken: String!, $id: ID!, $address: MailingAddressInput!) {
+      customerAddressUpdate(customerAccessToken: $customerAccessToken, id: $id, address: $address) {
+        customerAddress {
+          id address1 address2 city province zip country phone firstName lastName
+        }
+        customerUserErrors { field message code }
+      }
+    }
+  `;
+
+  const CUSTOMER_ADDRESS_DELETE = `
+    mutation customerAddressDelete($customerAccessToken: String!, $id: ID!) {
+      customerAddressDelete(customerAccessToken: $customerAccessToken, id: $id) {
+        deletedCustomerAddressId
+        customerUserErrors { field message code }
+      }
+    }
+  `;
+
+  const CUSTOMER_DEFAULT_ADDRESS_UPDATE = `
+    mutation customerDefaultAddressUpdate($customerAccessToken: String!, $addressId: ID!) {
+      customerDefaultAddressUpdate(customerAccessToken: $customerAccessToken, addressId: $addressId) {
+        customer { id }
+        customerUserErrors { field message code }
+      }
+    }
+  `;
+
+  function getCustomerToken() {
+    try {
+      return global.localStorage?.getItem(CUSTOMER_TOKEN_KEY) || null;
+    } catch {
+      return null;
+    }
+  }
+
+  function setCustomerToken(token) {
+    try {
+      if (token) global.localStorage.setItem(CUSTOMER_TOKEN_KEY, token);
+      else global.localStorage.removeItem(CUSTOMER_TOKEN_KEY);
+    } catch (_) {}
+  }
+
+  function isLoggedIn() {
+    return !!getCustomerToken();
+  }
+
+  async function customerRegister({ firstName, lastName, email, password }) {
+    const data = await graphql(CUSTOMER_CREATE, {
+      input: { firstName, lastName, email, password },
+    });
+    const errs = data.customerCreate?.customerUserErrors || [];
+    if (errs.length) throw new Error(errs.map((e) => e.message).join("; "));
+    return data.customerCreate.customer;
+  }
+
+  async function customerLogin(email, password) {
+    const data = await graphql(CUSTOMER_LOGIN, {
+      input: { email, password },
+    });
+    const errs = data.customerAccessTokenCreate?.customerUserErrors || [];
+    if (errs.length) throw new Error(errs.map((e) => e.message).join("; "));
+    const token = data.customerAccessTokenCreate?.customerAccessToken;
+    if (!token?.accessToken) throw new Error("No se pudo iniciar sesión");
+    setCustomerToken(token.accessToken);
+    return token;
+  }
+
+  async function customerLogout() {
+    const token = getCustomerToken();
+    if (token) {
+      try {
+        await graphql(CUSTOMER_LOGOUT, { customerAccessToken: token });
+      } catch (_) {}
+    }
+    setCustomerToken(null);
+  }
+
+  async function customerRecover(email) {
+    const data = await graphql(CUSTOMER_RECOVER, { email });
+    const errs = data.customerRecover?.customerUserErrors || [];
+    if (errs.length) throw new Error(errs.map((e) => e.message).join("; "));
+    return true;
+  }
+
+  async function getCustomer() {
+    const token = getCustomerToken();
+    if (!token) return null;
+    try {
+      const data = await graphql(CUSTOMER_QUERY, { customerAccessToken: token });
+      return data.customer || null;
+    } catch (e) {
+      if (/unauthorized|token/i.test(String(e?.message || ""))) setCustomerToken(null);
+      return null;
+    }
+  }
+
+  async function customerUpdate(fields) {
+    const token = getCustomerToken();
+    if (!token) throw new Error("No hay sesión activa");
+    const data = await graphql(CUSTOMER_UPDATE, {
+      customerAccessToken: token,
+      customer: fields,
+    });
+    const errs = data.customerUpdate?.customerUserErrors || [];
+    if (errs.length) throw new Error(errs.map((e) => e.message).join("; "));
+    return data.customerUpdate.customer;
+  }
+
+  /** Campos válidos para MailingAddressInput (Storefront API). */
+  function normalizeMailingAddressInput(raw) {
+    const r = raw || {};
+    const out = {};
+    const pairs = [
+      ["firstName", r.firstName],
+      ["lastName", r.lastName],
+      ["address1", r.address1],
+      ["address2", r.address2],
+      ["city", r.city],
+      ["company", r.company],
+      ["country", r.country],
+      ["province", r.province],
+      ["zip", r.zip],
+      ["phone", r.phone],
+    ];
+    for (const [key, val] of pairs) {
+      const s = val == null ? "" : String(val).trim();
+      if (s) out[key] = s;
+    }
+    return out;
+  }
+
+  async function customerAddressCreate(address) {
+    const token = getCustomerToken();
+    if (!token) throw new Error("No hay sesión activa");
+    const input = normalizeMailingAddressInput(address);
+    if (!input.address1) throw new Error("La dirección línea 1 es obligatoria.");
+    if (!input.city) throw new Error("La ciudad es obligatoria.");
+    if (!input.country) throw new Error("El país es obligatorio.");
+    const data = await graphql(CUSTOMER_ADDRESS_CREATE, {
+      customerAccessToken: token,
+      address: input,
+    });
+    const errs = data.customerAddressCreate?.customerUserErrors || [];
+    if (errs.length) throw new Error(errs.map((e) => e.message).join("; "));
+    return data.customerAddressCreate.customerAddress;
+  }
+
+  async function customerAddressUpdate(addressId, address) {
+    const token = getCustomerToken();
+    if (!token) throw new Error("No hay sesión activa");
+    if (!addressId) throw new Error("Falta el id de dirección.");
+    const input = normalizeMailingAddressInput(address);
+    if (!input.address1) throw new Error("La dirección línea 1 es obligatoria.");
+    if (!input.city) throw new Error("La ciudad es obligatoria.");
+    if (!input.country) throw new Error("El país es obligatorio.");
+    const data = await graphql(CUSTOMER_ADDRESS_UPDATE, {
+      customerAccessToken: token,
+      id: addressId,
+      address: input,
+    });
+    const errs = data.customerAddressUpdate?.customerUserErrors || [];
+    if (errs.length) throw new Error(errs.map((e) => e.message).join("; "));
+    return data.customerAddressUpdate.customerAddress;
+  }
+
+  async function customerAddressDelete(addressId) {
+    const token = getCustomerToken();
+    if (!token) throw new Error("No hay sesión activa");
+    const data = await graphql(CUSTOMER_ADDRESS_DELETE, {
+      customerAccessToken: token,
+      id: addressId,
+    });
+    const errs = data.customerAddressDelete?.customerUserErrors || [];
+    if (errs.length) throw new Error(errs.map((e) => e.message).join("; "));
+    return true;
+  }
+
+  async function customerDefaultAddressUpdate(addressId) {
+    const token = getCustomerToken();
+    if (!token) throw new Error("No hay sesión activa");
+    const data = await graphql(CUSTOMER_DEFAULT_ADDRESS_UPDATE, {
+      customerAccessToken: token,
+      addressId,
+    });
+    const errs = data.customerDefaultAddressUpdate?.customerUserErrors || [];
+    if (errs.length) throw new Error(errs.map((e) => e.message).join("; "));
+    return data.customerDefaultAddressUpdate.customer;
+  }
+
   global.NxShopify = {
     ready,
     getConfigSync,
@@ -663,5 +947,18 @@
     removeCartLine,
     money,
     stripHtml,
+    // Customer / Mi Cuenta
+    isLoggedIn,
+    customerRegister,
+    customerLogin,
+    customerLogout,
+    customerRecover,
+    getCustomer,
+    customerUpdate,
+    getCustomerToken,
+    customerAddressCreate,
+    customerAddressUpdate,
+    customerAddressDelete,
+    customerDefaultAddressUpdate,
   };
 })(typeof window !== "undefined" ? window : globalThis);
