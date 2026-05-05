@@ -1,0 +1,1580 @@
+﻿<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>PROTHENTIC — Todos los productos</title>
+    <meta name="description" content="Catálogo PROTHENTIC — Vendemos los mejores suplementos de las mejores marcas. Proteínas, pre-entrenos, aminoácidos y más, con envío en Colombia." />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="PROTHENTIC" />
+    <meta property="og:title" content="PROTHENTIC — Todos los productos" />
+    <meta property="og:description" content="Vendemos los mejores suplementos de las mejores marcas. Envío en Colombia." />
+    <meta property="og:image" content="/assets/isotipo-prothentic-red.png" />
+    <link rel="icon" type="image/png" href="/assets/isotipo-prothentic-red.png" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@1,800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+    <link rel="stylesheet" href="./nexorien-design-system.css" />
+  </head>
+  <body>
+    <!-- Navbar reutilizada (versión simplificada para página de colección). -->
+    <div id="announcement-bar" class="nx-announcement" role="region" aria-label="Promociones PROTHENTIC">
+      <div class="nx-announcement__inner">
+        <div class="nx-announcement__track" aria-hidden="false">
+          <button id="ann-prev" class="nx-announcement__nav nx-announcement__nav--prev" type="button" aria-label="Promoción anterior">
+            &#8249;
+          </button>
+          <div id="ann-message" class="nx-announcement__message" aria-live="polite" aria-atomic="true">
+            NOVEDAD · Carnigen Blue Razz &amp; Dragonfruit
+          </div>
+          <button id="ann-next" class="nx-announcement__nav nx-announcement__nav--next" type="button" aria-label="Siguiente promoción">
+            &#8250;
+          </button>
+        </div>
+        <a class="nx-announcement__brand" href="./index.html" aria-label="PROTHENTIC">
+          <img class="nx-announcement__brand-img" src="/assets/logo-prothentic-white.png" alt="PROTHENTIC" decoding="async" />
+        </a>
+      </div>
+    </div>
+
+    <header id="nexorien-navbar" class="nx-navbar nx-navbar--light" role="banner">
+      <div class="nx-navbar__inner">
+        <a class="nx-navbar__logo" href="./index.html" aria-label="Inicio PROTHENTIC">
+          <img
+            class="nx-navbar__logo-img nx-navbar__logo-img--default"
+            src="/assets/logo-prothentic-dark.png"
+            alt="PROTHENTIC"
+            width="180"
+            height="48"
+            decoding="async"
+          />
+        </a>
+
+        <ul class="nx-navbar__nav" aria-label="Navegación principal">
+          <li class="nx-nav-item">
+            <a class="nx-navbar__link" href="./todos-los-productos.html">TODOS LOS PRODUCTOS</a>
+          </li>
+          <li class="nx-nav-item"><a class="nx-navbar__link" href="./todos-los-productos.html?collection=proteinas-1">PROTEÍNAS</a></li>
+          <li class="nx-nav-item"><a class="nx-navbar__link" href="./todos-los-productos.html?collection=pre-entrenos-1">PRE-ENTRENOS</a></li>
+          <li class="nx-nav-item"><a class="nx-navbar__link" href="./todos-los-productos.html?collection=construir-musculo-1">CONSTRUIR MÚSCULO</a></li>
+          <li class="nx-nav-item"><a class="nx-navbar__link" href="./todos-los-productos.html?collection=salud-y-bienestar-1">SALUD Y BIENESTAR</a></li>
+          <li class="nx-nav-item"><a class="nx-navbar__link" href="./todos-los-productos.html?collection=manejo-de-peso-1">MANEJO DE PESO</a></li>
+          <li class="nx-nav-item"><a class="nx-navbar__link" href="./todos-los-productos.html?collection=ropa-y-accesorios">ROPA Y ACCESORIOS</a></li>
+        </ul>
+
+        <div class="nx-navbar__right">
+          <button class="nx-hamburger" type="button" aria-label="Abrir menú" aria-controls="nx-mobile-menu">
+            <span class="nx-hamburger__bar"></span>
+            <span class="nx-hamburger__bar"></span>
+            <span class="nx-hamburger__bar"></span>
+          </button>
+
+          <div class="nx-icons">
+            <button class="nx-icon" type="button" aria-label="Buscar">
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.75"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <circle cx="11" cy="11" r="8" />
+                <line x1="21" y1="21" x2="16.65" y2="16.65" />
+              </svg>
+            </button>
+            <button class="nx-icon" type="button" aria-label="Cuenta">
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.75"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                <circle cx="12" cy="7" r="4" />
+              </svg>
+            </button>
+            <div class="nx-cart-wrap" style="position: relative; display: inline-flex">
+              <button class="nx-icon" type="button" aria-label="Carrito">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.75"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
+                  <line x1="3" y1="6" x2="21" y2="6" />
+                  <path d="M16 10a4 4 0 0 1-8 0" />
+                </svg>
+              </button>
+              <span class="nx-cart-badge">0</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="navbar-divider navbar-divider--light"></div>
+
+    <div id="nx-mobile-menu" class="nx-mobile-menu" aria-hidden="true">
+      <button id="nx-mobile-close" class="nx-mobile-close" type="button" aria-label="Cerrar menú">✕</button>
+      <a class="nx-mobile-link" href="./todos-los-productos.html">TODOS LOS PRODUCTOS</a>
+      <a class="nx-mobile-link" href="./todos-los-productos.html?collection=proteinas-1">PROTEÍNAS</a>
+      <a class="nx-mobile-link" href="./todos-los-productos.html?collection=pre-entrenos-1">PRE-ENTRENOS</a>
+      <a class="nx-mobile-link" href="./todos-los-productos.html?collection=construir-musculo-1">CONSTRUIR MÚSCULO</a>
+      <a class="nx-mobile-link" href="./todos-los-productos.html?collection=salud-y-bienestar-1">SALUD Y BIENESTAR</a>
+      <a class="nx-mobile-link" href="./todos-los-productos.html?collection=manejo-de-peso-1">MANEJO DE PESO</a>
+      <a class="nx-mobile-link" href="./todos-los-productos.html?collection=ropa-y-accesorios">ROPA Y ACCESORIOS</a>
+    </div>
+
+    <script>
+      (function syncCatalogNavActive() {
+        var handle = new URLSearchParams(window.location.search || "").get("collection");
+        handle = handle ? String(handle).trim() : "";
+        document.querySelectorAll("#nexorien-navbar .nx-navbar__link, #nx-mobile-menu .nx-mobile-link").forEach(function (a) {
+          a.classList.remove("is-active");
+          var href = a.getAttribute("href");
+          if (!href) return;
+          var u;
+          try {
+            u = new URL(href, window.location.href);
+          } catch (e) {
+            return;
+          }
+          if (!u.pathname.endsWith("todos-los-productos.html")) return;
+          var col = new URLSearchParams(u.search).get("collection") || "";
+          if (handle) {
+            if (col === handle) a.classList.add("is-active");
+          } else if (!col) {
+            a.classList.add("is-active");
+          }
+        });
+      })();
+    </script>
+
+    <!-- ================================================================
+         PROTHENTIC — Todos los productos (Colección / Todos los productos)
+         Catálogo multiproducto + placeholders. Listo para Shopify Liquid.
+         ================================================================ -->
+    <main class="nx-all" aria-label="Todos los productos">
+      <header class="nx-all__head">
+        <h1 class="nx-all__title" id="nx-collection-title">Los mejores suplementos de las mejores marcas</h1>
+      </header>
+
+      <section class="nx-all__controls" aria-label="Filtros y orden">
+        <div class="nx-all__controls-inner">
+          <label class="nx-all__toggle">
+            <span class="nx-all__toggle-label">Solo en stock</span>
+            <input id="nx-instock" type="checkbox" />
+            <span class="nx-all__toggle-ui" aria-hidden="true"></span>
+          </label>
+
+          <div class="nx-all__sort">
+            <label class="nx-all__sort-label" for="nx-sort">Ordenar por</label>
+            <select id="nx-sort" class="nx-all__sort-select">
+              <option value="best">Más vendidos</option>
+              <option value="az">A–Z</option>
+              <option value="price_asc">Precio: menor a mayor</option>
+              <option value="price_desc">Precio: mayor a menor</option>
+              <option value="new">Novedades</option>
+            </select>
+          </div>
+        </div>
+      </section>
+
+      <!--
+        SHOPIFY / LIQUID (colección ALL):
+          {% paginate collections.all.products by 24 %}
+            {% for product in collections.all.products %}
+              <article class="nx-ap-card" data-instock="{{ product.available }}">
+                ...
+              </article>
+            {% endfor %}
+          {% endpaginate %}
+      -->
+      <section class="nx-all__grid" id="nx-products-grid" aria-label="Listado de productos">
+        <p class="nx-all__status" id="nx-products-status">Cargando productos desde Shopify…</p>
+      </section>
+    </main>
+
+    <!-- Footer: reutiliza el mismo estilo del home (sin duplicar toda la estructura aquí por brevedad). -->
+    <footer class="nx-footer-min" role="contentinfo">
+      <div class="nx-footer-min__inner">
+        <p class="nx-footer-min__legal">© <span id="nx-footer-year">2026</span>, PROTHENTIC · Los mejores suplementos de las mejores marcas</p>
+      </div>
+    </footer>
+
+    <style>
+      :root {
+        --nx-mega-top: 108px;
+      }
+
+      /* El header (barra promo + navbar) usa el CSS compartido: nexorien-design-system.css */
+
+      .nx-navbar {
+        position: fixed;
+        top: 40px;
+        left: 0;
+        right: 0;
+        height: 68px;
+        z-index: 999;
+        background: rgba(255, 255, 255, 0.92);
+        backdrop-filter: blur(18px) saturate(160%);
+        -webkit-backdrop-filter: blur(18px) saturate(160%);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+      }
+      .nx-navbar__inner {
+        max-width: 1440px;
+        margin: 0 auto;
+        padding: 0 48px;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 18px;
+      }
+      .nx-navbar__logo {
+        text-decoration: none;
+        line-height: 0;
+        display: inline-flex;
+        align-items: center;
+      }
+      .nx-navbar__logo-img {
+        height: clamp(40px, 3.5vw + 30px, 54px);
+        width: auto;
+        max-width: min(400px, 88vw);
+        display: block;
+        object-fit: contain;
+      }
+
+      .nx-navbar__nav {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: clamp(10px, 1.1vw, 20px);
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        min-width: 0;
+      }
+      .nx-nav-item {
+        display: flex;
+        align-items: center;
+      }
+      .nx-navbar__link {
+        font-family: var(--font-display-brand);
+        font-size: clamp(9.5px, 0.72vw + 8px, 11px);
+        font-weight: 900;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: rgba(10, 10, 18, 0.72);
+        text-decoration: none;
+        padding: 4px 0;
+        position: relative;
+        transition: color 0.2s ease;
+        white-space: nowrap;
+      }
+      .nx-navbar__link::after {
+        content: "";
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 0%;
+        height: 2px;
+        background: #E32D10;
+        transition: width 0.25s ease;
+      }
+      .nx-navbar__link:hover {
+        color: rgba(10, 10, 18, 1);
+      }
+      .nx-navbar__link:hover::after {
+        width: 100%;
+      }
+      .nx-navbar__link.is-active {
+        color: rgba(10, 10, 18, 1);
+      }
+      .nx-navbar__link.is-active::after {
+        width: 100%;
+      }
+
+      #nexorien-navbar .nx-navbar__link,
+      #nx-mobile-menu .nx-mobile-link {
+        font-family: var(--font-display-brand) !important;
+        font-weight: 900;
+      }
+
+      .nx-icons {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+      }
+      .nx-icon {
+        background: none;
+        border: none;
+        cursor: pointer;
+        color: rgba(10, 10, 18, 0.72);
+        padding: 0;
+        display: flex;
+        align-items: center;
+      }
+      .nx-icon:hover {
+        color: rgba(10, 10, 18, 1);
+      }
+
+      .navbar-divider {
+        height: 1px;
+        width: 100%;
+        position: fixed;
+        top: 108px;
+        z-index: 998;
+        background: linear-gradient(
+          90deg,
+          transparent 0%,
+          rgba(0, 0, 0, 0.08) 30%,
+          rgba(0, 0, 0, 0.08) 70%,
+          transparent 100%
+        );
+      }
+
+      .nx-hamburger {
+        display: none;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+        color: rgba(10, 10, 18, 0.85);
+      }
+      .nx-hamburger__bar {
+        display: block;
+        width: 18px;
+        height: 1.5px;
+        background: currentColor;
+      }
+      .nx-hamburger__bar + .nx-hamburger__bar {
+        margin-top: 4px;
+      }
+      .nx-mobile-menu {
+        position: fixed;
+        inset: 0;
+        z-index: 9999;
+        background: rgba(26, 26, 26, 0.98);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 32px;
+        transform: translateX(100%);
+        opacity: 0;
+        transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+        pointer-events: none;
+      }
+      .nx-mobile-menu.open {
+        transform: translateX(0);
+        opacity: 1;
+        pointer-events: auto;
+      }
+      .nx-mobile-close {
+        position: absolute;
+        top: 24px;
+        right: 24px;
+        font-size: 28px;
+        color: #ffffff;
+        cursor: pointer;
+        background: none;
+        border: none;
+      }
+      .nx-mobile-link {
+        font-family: var(--font-display-brand);
+        font-style: normal;
+        font-weight: 900;
+        font-size: 44px;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.85);
+        text-decoration: none;
+      }
+      .nx-mobile-link:hover {
+        color: #E32D10;
+      }
+      .nx-mobile-link.is-active {
+        color: #E32D10;
+      }
+
+      /* Page shell */
+      body {
+        background: #ffffff;
+        color: #0a0a12;
+      }
+
+      .nx-all {
+        padding-top: 108px;
+      }
+
+      .nx-all__head {
+        max-width: 1440px;
+        margin: 0 auto;
+        padding: clamp(44px, 6vw, 84px) 48px 18px;
+        text-align: center;
+      }
+
+      .nx-all__title {
+        margin: 0;
+        font-family: var(--font-display-brand);
+        font-size: clamp(1.4rem, 2.2vw, 2rem);
+        font-weight: 900;
+        letter-spacing: 0.01em;
+        color: #111;
+      }
+
+      .nx-all__controls {
+        max-width: 1440px;
+        margin: 0 auto;
+        padding: 0 48px 18px;
+      }
+
+      .nx-all__controls-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+      }
+
+      .nx-all__toggle {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+        font-size: 13px;
+        color: #333;
+        user-select: none;
+      }
+
+      .nx-all__toggle input {
+        position: absolute;
+        opacity: 0;
+        width: 1px;
+        height: 1px;
+      }
+
+      .nx-all__toggle-ui {
+        width: 44px;
+        height: 24px;
+        border-radius: 999px;
+        background: #e5e7eb;
+        position: relative;
+        transition: background 0.2s ease;
+      }
+
+      .nx-all__toggle-ui::after {
+        content: "";
+        position: absolute;
+        top: 3px;
+        left: 3px;
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        background: #fff;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.14);
+        transition: transform 0.2s ease;
+      }
+
+      #nx-instock:checked + .nx-all__toggle-ui {
+        background: #E32D10;
+      }
+
+      #nx-instock:checked + .nx-all__toggle-ui::after {
+        transform: translateX(20px);
+      }
+
+      .nx-all__sort {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+        font-size: 13px;
+        color: #333;
+      }
+
+      .nx-all__sort-select {
+        border: 1px solid rgba(0, 0, 0, 0.15);
+        border-radius: 999px;
+        padding: 8px 12px;
+        background: #fff;
+        font-size: 13px;
+      }
+
+      .nx-all__grid {
+        max-width: 1440px;
+        margin: 0 auto;
+        padding: 10px 48px 64px;
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: clamp(18px, 2.2vw, 34px);
+      }
+
+      .nx-all__status {
+        grid-column: 1 / -1;
+        margin: 0;
+        padding: 24px 8px;
+        font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+        font-size: 14px;
+        color: #444;
+        text-align: center;
+      }
+
+      .nx-all__status--error {
+        color: #b91c1c;
+      }
+
+      .nx-all__status--hint {
+        color: #92400e;
+        text-align: left;
+        max-width: 720px;
+        margin-left: auto;
+        margin-right: auto;
+        line-height: 1.5;
+      }
+
+      .nx-ap-card {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 8px 4px 0;
+      }
+
+      .nx-ap-card__top {
+        width: 100%;
+        display: flex;
+        justify-content: flex-start;
+        min-height: 22px;
+        padding-left: 12px;
+      }
+
+      .nx-ap-badge {
+        display: inline-flex;
+        align-items: center;
+        min-height: 18px;
+        padding: 4px 11px;
+        border-radius: 999px;
+        font-family: var(--font-body, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif);
+        font-size: 8px;
+        font-weight: 700;
+        font-style: normal;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.94);
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.14);
+        -webkit-font-smoothing: antialiased;
+        background: linear-gradient(165deg, #E32D10 0%, #b5230c 55%, #8c1b09 100%);
+      }
+
+      .nx-ap-badge--sale {
+        background: linear-gradient(165deg, #6b2222 0%, #451515 55%, #301010 100%);
+        border-color: rgba(255, 255, 255, 0.12);
+      }
+
+      .nx-ap-badge--plain {
+        background: linear-gradient(165deg, #E32D10 0%, #b5230c 55%, #8c1b09 100%);
+      }
+
+      .nx-ap-card__media {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 16px 0 8px;
+        position: relative;
+      }
+
+      .nx-ap-card__quick {
+        position: absolute;
+        right: 16px;
+        bottom: 16px;
+        min-height: 28px;
+        height: auto;
+        padding: 0 16px;
+        border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, 0.35);
+        background: rgba(10, 10, 10, 0.72);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        color: #ffffff;
+        font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.01em;
+        cursor: pointer;
+        opacity: 0;
+        transform: translateY(4px);
+        pointer-events: none;
+        transition: opacity 180ms ease, transform 180ms ease, background 180ms ease, border-color 180ms ease;
+      }
+
+      .nx-ap-card:hover .nx-ap-card__quick,
+      .nx-ap-card:focus-within .nx-ap-card__quick {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+      }
+
+      .nx-ap-card__quick:hover {
+        background: rgba(10, 10, 10, 0.86);
+        border-color: rgba(255, 255, 255, 0.55);
+      }
+
+      .nx-ap-card__quick[aria-busy="true"] {
+        opacity: 0.8;
+        cursor: progress;
+      }
+
+      .nx-ap-card__img {
+        width: min(100%, 320px);
+        height: auto;
+        display: block;
+      }
+
+      .nx-ap-card__oos {
+        position: absolute;
+        top: 12px;
+        left: 12px;
+        padding: 6px 10px;
+        border-radius: 6px;
+        background: rgba(0, 0, 0, 0.92);
+        color: #fff;
+        font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+        font-size: 11px;
+        font-weight: 800;
+      }
+
+      .nx-ap-card__body {
+        width: 100%;
+        padding: 0 6px 14px;
+      }
+
+      .nx-ap-card__category {
+        margin: 0 0 4px;
+        font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: rgba(10, 10, 10, 0.52);
+        text-align: center;
+        line-height: 1.35;
+      }
+
+      .nx-ap-card__rating {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        margin: 10px 0 0;
+        opacity: 1;
+      }
+
+      .nx-ap-stars {
+        color: #f5c451;
+        letter-spacing: 0.16em;
+        font-size: 13px;
+        line-height: 1;
+      }
+
+      .nx-ap-reviews {
+        color: rgba(10, 10, 10, 0.6);
+        font-size: 12px;
+        font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      }
+
+      .nx-ap-card__name {
+        margin: 0;
+        font-family: var(--font-display-brand);
+        font-style: normal;
+        font-size: 14px;
+        font-weight: 900;
+        color: #111;
+        line-height: 1.25;
+      }
+
+      .nx-ap-card__price {
+        margin: 6px 0 0;
+        font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+        font-size: 13px;
+        color: #2a2a2a;
+        display: flex;
+        align-items: baseline;
+        justify-content: center;
+        gap: 10px;
+      }
+
+      .nx-ap-card__price-sale {
+        color: #0a0a0a;
+        font-weight: 800;
+      }
+
+      .nx-ap-card__price-was {
+        font-weight: 700;
+        color: rgba(10, 10, 10, 0.45);
+        text-decoration: line-through;
+        text-decoration-thickness: 2px;
+        text-decoration-color: rgba(227, 0, 0, 0.55);
+      }
+
+      .nx-ap-swatches {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        margin-top: 10px;
+      }
+
+      .nx-ap-swatch {
+        width: 28px;
+        height: 28px;
+        padding: 0;
+        border-radius: 999px;
+        border: 2px solid rgba(0, 0, 0, 0.75);
+        background: #e5e7eb;
+        cursor: pointer;
+        position: relative;
+      }
+
+      .nx-ap-swatch.is-active {
+        border-color: #111;
+        box-shadow: 0 0 0 3px #fff inset;
+      }
+
+      .nx-ap-swatch:focus-visible {
+        outline: 2px solid rgba(227, 45, 16, 0.8);
+        outline-offset: 2px;
+      }
+
+      .nx-ap-swatch-more {
+        height: 28px;
+        min-width: 40px;
+        padding: 0 12px;
+        border-radius: 999px;
+        border: 1px solid rgba(0, 0, 0, 0.16);
+        background: rgba(255, 255, 255, 0.95);
+        font-size: 12px;
+        font-weight: 700;
+        color: rgba(10, 10, 10, 0.7);
+        font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .nx-footer-min {
+        background: #f1f1f1;
+        border-top: 1px solid rgba(0, 0, 0, 0.06);
+        padding: 22px 0;
+      }
+      .nx-footer-min__inner {
+        max-width: 1440px;
+        margin: 0 auto;
+        padding: 0 48px;
+      }
+      .nx-footer-min__legal {
+        margin: 0;
+        font-size: 12px;
+        color: #666;
+        font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      }
+
+      @media (max-width: 1100px) {
+        .nx-all__grid {
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+      }
+
+      @media (max-width: 900px) {
+        .nx-all__grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
+      @media (max-width: 768px) {
+        .nx-announcement__inner,
+        .nx-navbar__inner {
+          padding: 0 20px;
+        }
+        .nx-announcement {
+          height: 34px;
+        }
+        .nx-announcement__nav {
+          width: 24px;
+          height: 24px;
+          font-size: 20px;
+        }
+        .nx-announcement__nav--prev {
+          left: 8px;
+        }
+        .nx-announcement__nav--next {
+          right: 8px;
+        }
+        .nx-navbar {
+          top: 34px;
+          height: 56px;
+        }
+        .navbar-divider {
+          top: 90px;
+        }
+        .nx-all {
+          padding-top: 90px;
+        }
+        .nx-navbar__nav {
+          display: none;
+        }
+        .nx-hamburger {
+          display: inline-flex;
+          flex-direction: column;
+        }
+        .nx-all__head {
+          padding-left: 20px;
+          padding-right: 20px;
+        }
+        .nx-all__controls,
+        .nx-all__grid,
+        .nx-footer-min__inner {
+          padding-left: 20px;
+          padding-right: 20px;
+        }
+
+        /* Catálogo móvil: 1 producto por fila + controles y tarjetas más ordenados */
+        .nx-all__grid {
+          grid-template-columns: 1fr;
+          gap: 20px;
+          padding-top: 12px;
+          padding-bottom: 48px;
+        }
+
+        .nx-all__controls {
+          padding-bottom: 14px;
+        }
+
+        .nx-all__controls-inner {
+          flex-direction: column;
+          align-items: stretch;
+          gap: 14px;
+        }
+
+        .nx-all__toggle {
+          justify-content: space-between;
+          width: 100%;
+          box-sizing: border-box;
+          padding: 12px 14px;
+          border: 1px solid rgba(0, 0, 0, 0.08);
+          border-radius: 12px;
+          background: #fafafa;
+          font-family: var(--font-body, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif);
+          font-size: 14px;
+          font-weight: 600;
+          color: #1a1a1a;
+        }
+
+        .nx-all__toggle-ui {
+          width: 40px;
+          height: 22px;
+          flex-shrink: 0;
+        }
+
+        .nx-all__toggle-ui::after {
+          width: 16px;
+          height: 16px;
+          top: 3px;
+          left: 3px;
+        }
+
+        #nx-instock:checked + .nx-all__toggle-ui::after {
+          transform: translateX(18px);
+        }
+
+        .nx-all__sort {
+          flex-direction: column;
+          align-items: stretch;
+          gap: 8px;
+          width: 100%;
+        }
+
+        .nx-all__sort-label {
+          font-size: 12px;
+          font-weight: 600;
+          letter-spacing: 0.02em;
+          color: rgba(10, 10, 10, 0.55);
+        }
+
+        .nx-all__sort-select {
+          width: 100%;
+          max-width: none;
+          border-radius: 12px;
+          padding: 12px 14px;
+          min-height: 46px;
+          font-size: 14px;
+          font-family: var(--font-body, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif);
+          border-color: rgba(0, 0, 0, 0.12);
+          box-sizing: border-box;
+        }
+
+        .nx-ap-card {
+          padding: 16px 16px 18px;
+          border-radius: 16px;
+          border: 1px solid rgba(0, 0, 0, 0.07);
+          background: #ffffff;
+          box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+        }
+
+        .nx-ap-card__top {
+          padding-left: 4px;
+        }
+
+        .nx-ap-card__media {
+          padding: 10px 0 14px;
+        }
+
+        .nx-ap-card__img {
+          width: min(100%, 300px);
+        }
+
+        .nx-ap-card__body {
+          padding: 0 4px 4px;
+        }
+
+        .nx-ap-card__name {
+          font-size: 15px;
+          line-height: 1.3;
+        }
+
+        .nx-ap-card__quick {
+          opacity: 1;
+          transform: none;
+          pointer-events: auto;
+          right: 12px;
+          bottom: 12px;
+          min-width: 44px;
+          min-height: 44px;
+          height: auto;
+          padding: 0 18px;
+          box-sizing: border-box;
+          border-radius: 12px;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .nx-ap-swatches {
+          flex-wrap: wrap;
+          gap: 10px;
+          row-gap: 12px;
+          margin-top: 14px;
+          padding: 2px 0 6px;
+          justify-content: center;
+        }
+
+        .nx-ap-swatch {
+          width: 32px;
+          height: 32px;
+          flex-shrink: 0;
+        }
+
+        .nx-ap-swatch.is-active {
+          box-shadow: 0 0 0 2px #fff, 0 0 0 4px #111;
+        }
+
+        .nx-ap-swatch-more {
+          height: 32px;
+          min-width: 48px;
+          padding: 0 14px;
+          border-radius: 12px;
+          border-color: rgba(0, 0, 0, 0.12);
+        }
+      }
+    </style>
+
+    <script src="./nexorien-shopify.js"></script>
+    <script src="./nexorien-cart.js"></script>
+    <script>
+      function nxBuildProductCard(pr) {
+        const art = document.createElement("article");
+        art.className = "nx-ap-card";
+        art.setAttribute("data-instock", pr.instock ? "true" : "false");
+        art.setAttribute("data-variant-instock", pr.variantInStock ? "true" : "false");
+        art.setAttribute("data-title", pr.title);
+        art.setAttribute("data-handle", pr.handle);
+        art.setAttribute("data-price", String(pr.priceAmount));
+        art.setAttribute("data-selected-variant-id", pr.variantId || "");
+        art.setAttribute("tabindex", "0");
+        art.setAttribute("role", "link");
+
+        const top = document.createElement("div");
+        top.className = "nx-ap-card__top";
+
+        const media = document.createElement("div");
+        media.className = "nx-ap-card__media";
+        const img = document.createElement("img");
+        img.className = "nx-ap-card__img";
+        img.src =
+          pr.imageUrl ||
+          "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Crect fill='%23eee' width='100%25' height='100%25'/%3E%3C/svg%3E";
+        img.alt = pr.imageAlt || pr.title;
+        img.width = 520;
+        img.height = 520;
+        img.loading = "lazy";
+        img.decoding = "async";
+        media.appendChild(img);
+
+        const quick = document.createElement("button");
+        quick.type = "button";
+        quick.className = "nx-ap-card__quick";
+        quick.textContent = "+ Agregar rápido";
+        quick.addEventListener("click", async (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          const vid = art.getAttribute("data-selected-variant-id") || pr.variantId || "";
+          if (!vid) return;
+          const canAdd = String(art.getAttribute("data-variant-instock")) === "true";
+          quick.setAttribute("aria-busy", "true");
+          quick.disabled = true;
+          try {
+            if (window.NxCart?.addVariantAndOpen) {
+              await window.NxCart.addVariantAndOpen(vid, 1);
+            } else if (window.NxShopify?.addVariantToCart) {
+              await window.NxShopify.addVariantToCart(vid, 1);
+            }
+          } catch (err) {
+            alert(err?.message || String(err));
+          } finally {
+            quick.removeAttribute("aria-busy");
+            quick.disabled = !canAdd;
+          }
+        });
+        media.appendChild(quick);
+        let oos = null;
+        if (!pr.instock) {
+          oos = document.createElement("span");
+          oos.className = "nx-ap-card__oos";
+          oos.textContent = "Agotado";
+          media.appendChild(oos);
+        }
+
+        const body = document.createElement("div");
+        body.className = "nx-ap-card__body";
+        const catLine = String(pr.categoryLabel || "").trim();
+        if (catLine) {
+          const pCat = document.createElement("p");
+          pCat.className = "nx-ap-card__category";
+          pCat.textContent = catLine;
+          body.appendChild(pCat);
+        }
+        const h2 = document.createElement("h2");
+        h2.className = "nx-ap-card__name";
+        h2.textContent = pr.title;
+        const priceEl = document.createElement("p");
+        priceEl.className = "nx-ap-card__price";
+        body.appendChild(h2);
+        body.appendChild(priceEl);
+
+        const rating = document.createElement("div");
+        rating.className = "nx-ap-card__rating";
+        rating.setAttribute("aria-hidden", "true");
+        const reviewsCount = typeof pr.reviewsCount === "number" ? pr.reviewsCount : null;
+        rating.innerHTML = `<span class="nx-ap-stars">★★★★★</span><span class="nx-ap-reviews">${
+          reviewsCount != null ? `${reviewsCount} reseñas` : "— reseñas"
+        }</span>`;
+        body.appendChild(rating);
+
+        const sw = document.createElement("div");
+        sw.className = "nx-ap-swatches";
+        sw.setAttribute("aria-label", "Variantes");
+        const pickOptionName = () => {
+          const opts = pr.options || [];
+          const like = opts.find((o) => /flavor|sabor|tamaño|size|color/i.test(o.name || ""));
+          return (like?.name || opts[0]?.name || "").trim();
+        };
+        const optName = pickOptionName();
+        const variants = Array.isArray(pr.variants) ? pr.variants : [];
+        const seen = new Set();
+        const swatches = [];
+        for (const v of variants) {
+          const val =
+            (v.selectedOptions || []).find((o) => String(o.name || "").toLowerCase() === String(optName || "").toLowerCase())?.value ||
+            (v.selectedOptions || [])[0]?.value ||
+            v.title;
+          const key = String(val || "").trim();
+          if (!key || seen.has(key)) continue;
+          seen.add(key);
+          swatches.push({
+            label: key,
+            imageUrl: v.imageUrl || "",
+            variant: v,
+          });
+        }
+
+        const norm = (s) =>
+          String(s || "")
+            .toLowerCase()
+            .normalize("NFD")
+            .replace(/[\u0300-\u036f]/g, "")
+            .trim();
+
+        const hashColor = (s) => {
+          const str = String(s || "");
+          let h = 0;
+          for (let i = 0; i < str.length; i++) h = (h * 31 + str.charCodeAt(i)) >>> 0;
+          const hue = h % 360;
+          return `hsl(${hue} 55% 55%)`;
+        };
+
+        const swatchStyleForFlavor = (label) => {
+          const s = norm(label);
+
+          // --- Patterned / special ---
+          if (/(sandia|watermelon)/.test(s)) {
+            return {
+              kind: "pattern",
+              background:
+                // green outer ring + pink flesh + seeds
+                "radial-gradient(circle at 50% 50%, #ff4d6d 0 62%, #1f7a3a 63% 72%, #0b5a26 73% 100%)," +
+                "radial-gradient(circle at 30% 35%, rgba(0,0,0,0.75) 0 2px, transparent 3px)," +
+                "radial-gradient(circle at 60% 55%, rgba(0,0,0,0.75) 0 2px, transparent 3px)," +
+                "radial-gradient(circle at 52% 28%, rgba(0,0,0,0.75) 0 2px, transparent 3px)," +
+                "radial-gradient(circle at 40% 68%, rgba(0,0,0,0.75) 0 2px, transparent 3px)",
+            };
+          }
+
+          // --- Solid semantic colors ---
+          if (/(chocolate|choco|cacao|brownie|cookies? ?(n|and) ?cream|cookies? ?& ?cream)/.test(s)) return { kind: "solid", background: "#5b3a29" };
+          if (/(vainilla|vanilla|cream|crema)/.test(s)) return { kind: "solid", background: "#f3e2b6" };
+          if (/(limon|lemon|lime|lima)/.test(s)) return { kind: "solid", background: "#facc15" };
+          if (/(naranja|orange)/.test(s)) return { kind: "solid", background: "#fb923c" };
+          if (/(mango)/.test(s)) return { kind: "solid", background: "#f59e0b" };
+          if (/(fresa|strawberry|berries|berry|frutos rojos)/.test(s)) return { kind: "solid", background: "#ef4444" };
+          if (/(uva|grape)/.test(s)) return { kind: "solid", background: "#7c3aed" };
+          if (/(cereza|cherry)/.test(s)) return { kind: "solid", background: "#be123c" };
+          if (/(frambuesa|raspberry)/.test(s)) return { kind: "solid", background: "#f472b6" };
+          if (/(blue razz|blue raspberry|frambuesa azul|azul)/.test(s)) return { kind: "solid", background: "#2563eb" };
+          if (/(pina|pineapple)/.test(s)) return { kind: "solid", background: "#fde047" };
+          if (/(coco|coconut)/.test(s)) return { kind: "solid", background: "#ffffff" };
+          if (/(cafe|coffee|mocha|latte|capuccino)/.test(s)) return { kind: "solid", background: "#3b2f2a" };
+          if (/(sin sabor|unflavored|natural)/.test(s)) return { kind: "solid", background: "#e5e7eb" };
+
+          // fallback
+          return { kind: "solid", background: hashColor(label) };
+        };
+
+        const fmtMoney = (amount, currencyCode) => {
+          try {
+            if (window.NxShopify?.money) return window.NxShopify.money(amount, currencyCode);
+          } catch (_) {}
+          const cur = currencyCode || "COP";
+          const frac = cur === "COP" || cur === "CLP" ? 0 : 2;
+          return new Intl.NumberFormat("es-CO", { style: "currency", currency: cur, maximumFractionDigits: frac }).format(
+            Number(amount || 0)
+          );
+        };
+
+        const ensureOos = () => {
+          if (oos) return oos;
+          const el = document.createElement("span");
+          el.className = "nx-ap-card__oos";
+          el.textContent = "Agotado";
+          media.appendChild(el);
+          oos = el;
+          return el;
+        };
+
+        const applyVariantToCard = (v) => {
+          if (!v || !v.id) return;
+          art.setAttribute("data-selected-variant-id", v.id);
+          art.setAttribute("data-price", String(Number(v.priceAmount || 0)));
+
+          const ok = !!v.availableForSale;
+          art.setAttribute("data-variant-instock", ok ? "true" : "false");
+          if (ok) {
+            if (oos) oos.style.display = "none";
+          } else {
+            ensureOos().style.display = "";
+          }
+          quick.disabled = !ok;
+          quick.textContent = ok ? "+ Agregar rápido" : "Agotado";
+
+          if (v.imageUrl) {
+            img.src = v.imageUrl;
+          }
+
+          // Price row
+          priceEl.innerHTML = "";
+          const cur = v.currencyCode || pr.currencyCode || "COP";
+          const amt = Number(v.priceAmount || 0);
+          const cmp = v.compareAtAmount != null ? Number(v.compareAtAmount) : null;
+          if (cmp && cmp > amt) {
+            const sale = document.createElement("span");
+            sale.className = "nx-ap-card__price-sale";
+            sale.textContent = fmtMoney(amt, cur);
+            const was = document.createElement("span");
+            was.className = "nx-ap-card__price-was";
+            was.textContent = fmtMoney(cmp, cur);
+            priceEl.appendChild(sale);
+            priceEl.appendChild(was);
+          } else {
+            priceEl.textContent = fmtMoney(amt, cur);
+          }
+
+          // Top badge (AHORRA) reflects selected variant
+          if (cmp && cmp > amt) {
+            const saveAmt = Math.max(0, cmp - amt);
+            const b = document.createElement("span");
+            b.className = "nx-ap-badge nx-ap-badge--sale";
+            b.textContent = `AHORRA ${fmtMoney(saveAmt, cur)}`;
+            top.replaceChildren(b);
+          } else {
+            top.replaceChildren();
+          }
+        };
+
+        const max = 4;
+        swatches.slice(0, max).forEach((swc, i) => {
+          const b = document.createElement("button");
+          b.type = "button";
+          b.className = "nx-ap-swatch" + (i === 0 ? " is-active" : "");
+          b.setAttribute("aria-label", swc.label);
+          b.title = swc.label;
+          const st = swatchStyleForFlavor(swc.label);
+          b.style.background = st.background;
+          if (st.kind === "pattern") {
+            b.style.backgroundRepeat = "no-repeat";
+            b.style.backgroundSize = "cover";
+          }
+          b.addEventListener("click", (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            if (swc.imageUrl) img.src = swc.imageUrl;
+            Array.from(sw.querySelectorAll(".nx-ap-swatch")).forEach((x) => x.classList.remove("is-active"));
+            b.classList.add("is-active");
+            if (swc.variant) applyVariantToCard(swc.variant);
+          });
+          sw.appendChild(b);
+        });
+        const extra = Math.max(0, swatches.length - max);
+        if (extra > 0) {
+          const more = document.createElement("span");
+          more.className = "nx-ap-swatch-more";
+          more.textContent = "+" + extra;
+          sw.appendChild(more);
+        }
+        body.appendChild(sw);
+
+        art.appendChild(top);
+        art.appendChild(media);
+        art.appendChild(body);
+
+        const anyVariantInStock = variants.some((v) => v && !!v.availableForSale);
+        art.setAttribute("data-instock", (pr.instock || anyVariantInStock) ? "true" : "false");
+
+        const defaultVariant =
+          variants.find((v) => v && v.id && v.id === pr.variantId) || variants[0] || null;
+        if (defaultVariant) {
+          applyVariantToCard(defaultVariant);
+          const activeLabel =
+            (defaultVariant.selectedOptions || []).find(
+              (o) => String(o.name || "").toLowerCase() === String(optName || "").toLowerCase()
+            )?.value ||
+            (defaultVariant.selectedOptions || [])[0]?.value ||
+            defaultVariant.title;
+          const key = String(activeLabel || "").trim();
+          if (key) {
+            Array.from(sw.querySelectorAll(".nx-ap-swatch")).forEach((btn) => {
+              const on = String(btn.getAttribute("aria-label") || "").trim() === key;
+              btn.classList.toggle("is-active", on);
+            });
+          }
+        } else {
+          art.setAttribute("data-selected-variant-id", pr.variantId || "");
+          art.setAttribute("data-variant-instock", pr.variantInStock ? "true" : "false");
+          art.setAttribute("data-price", String(pr.priceAmount));
+          priceEl.textContent = pr.priceFormatted;
+          if (pr.badgeText) {
+            const b = document.createElement("span");
+            b.className = "nx-ap-badge " + (pr.badgeClass || "");
+            b.textContent = pr.badgeText;
+            top.appendChild(b);
+          }
+        }
+
+        return art;
+      }
+
+      function nxInitProductGrid() {
+        const instock = document.getElementById("nx-instock");
+        const sort = document.getElementById("nx-sort");
+        const grid = document.querySelector(".nx-all__grid");
+        if (!grid) return;
+
+        const cards = () => Array.from(grid.querySelectorAll(".nx-ap-card"));
+
+        const applyStock = () => {
+          const only = !!instock?.checked;
+          for (const c of cards()) {
+            const ok = String(c.getAttribute("data-instock")) === "true";
+            c.style.display = !only || ok ? "" : "none";
+          }
+        };
+
+        const applySort = () => {
+          const v = sort?.value || "best";
+          const arr = cards();
+          const visible = arr.filter((c) => c.style.display !== "none");
+          const hidden = arr.filter((c) => c.style.display === "none");
+
+          const byTitle = (a, b) =>
+            (a.getAttribute("data-title") || "").localeCompare(b.getAttribute("data-title") || "");
+          const byPrice = (a, b) => Number(a.getAttribute("data-price") || 0) - Number(b.getAttribute("data-price") || 0);
+
+          let sorted = visible;
+          if (v === "az") sorted = [...visible].sort(byTitle);
+          if (v === "price_asc") sorted = [...visible].sort(byPrice);
+          if (v === "price_desc") sorted = [...visible].sort((a, b) => byPrice(b, a));
+
+          for (const el of [...sorted, ...hidden]) grid.appendChild(el);
+        };
+
+        instock?.addEventListener("change", () => {
+          applyStock();
+          applySort();
+        });
+        sort?.addEventListener("change", applySort);
+
+        applyStock();
+        applySort();
+
+        const slugify = (s) =>
+          String(s || "")
+            .toLowerCase()
+            .normalize("NFD")
+            .replace(/[\u0300-\u036f]/g, "")
+            .replace(/[^a-z0-9]+/g, "-")
+            .replace(/(^-|-$)/g, "");
+
+        grid.addEventListener("click", (e) => {
+          const card = e.target.closest(".nx-ap-card");
+          if (!card) return;
+
+          const title = card.getAttribute("data-title") || card.querySelector(".nx-ap-card__name")?.textContent || "";
+          const handle = card.getAttribute("data-handle") || slugify(title);
+          window.location.href = `./producto.html?handle=${encodeURIComponent(handle)}`;
+        });
+
+        for (const card of cards()) {
+          if (!card.hasAttribute("tabindex")) card.setAttribute("tabindex", "0");
+          card.setAttribute("role", "link");
+          card.addEventListener("keydown", (e) => {
+            if (e.key !== "Enter" && e.key !== " ") return;
+            e.preventDefault();
+            const title = card.getAttribute("data-title") || card.querySelector(".nx-ap-card__name")?.textContent || "";
+            const handle = card.getAttribute("data-handle") || slugify(title);
+            window.location.href = `./producto.html?handle=${encodeURIComponent(handle)}`;
+          });
+        }
+      }
+
+      (async function nxLoadShopifyProducts() {
+        const grid = document.getElementById("nx-products-grid");
+        const status = document.getElementById("nx-products-status");
+        try {
+          await NxShopify.ready();
+          const params = new URLSearchParams(window.location.search || "");
+          const collectionHandle = params.get("collection");
+
+          let products = [];
+          if (collectionHandle) {
+            const col = await NxShopify.fetchCollectionByHandle(collectionHandle, 250);
+            if (!col) {
+              if (status) {
+                status.textContent =
+                  "No aparece esta colección en la Storefront API (handle: \"" +
+                  collectionHandle +
+                  "\"). Revisa en Shopify la URL de la colección (SEO) y que coincida con ?collection=… " +
+                  "O publica la colección en el mismo canal Headless que el token.";
+                status.classList.remove("nx-all__status--error");
+                status.classList.add("nx-all__status--hint");
+              }
+              products = [];
+            } else {
+              if (col.title) {
+                const t = document.getElementById("nx-collection-title");
+                if (t) t.textContent = col.title;
+              }
+              products = col.products || [];
+              if (products.length === 0 && status) {
+                status.textContent =
+                  "La colección «" +
+                  (col.title || collectionHandle) +
+                  "» existe, pero no hay productos visibles en este canal (Headless). " +
+                  "Productos: cada uno → Publicación en canales de venta → activa Headless. Colecciones: mismo canal. Luego recarga.";
+                status.classList.add("nx-all__status--hint");
+              }
+            }
+          } else {
+            products = await NxShopify.fetchAllProducts(250);
+          }
+          if (products.length === 0) {
+            if (status) {
+              const isCollection = Boolean(collectionHandle);
+              const alreadyCustom = status.textContent && !/^Cargando/.test(status.textContent);
+              if (alreadyCustom && isCollection) {
+                /* mensaje ya definido arriba (colección inexistente o vacía) */
+              } else if (!isCollection) {
+                status.textContent =
+                  "La tienda respondió bien, pero no hay productos en el catálogo para esta vitrina (Storefront API). " +
+                  "Admin → Productos → abre un producto → Publicación en canales de venta → activa Headless (PROTHENTIC / el canal del token). " +
+                  "Repite con todos los que quieras vender y recarga. También abre esta página con npm run dev (http://127.0.0.1:…), no como archivo del disco.";
+                status.classList.add("nx-all__status--hint");
+              }
+            }
+          } else {
+            if (status) status.remove();
+            for (const pr of products) {
+              grid.appendChild(nxBuildProductCard(pr));
+            }
+          }
+        } catch (e) {
+          if (status) {
+            status.textContent =
+              "No se pudieron cargar los productos. Revisa el token en .env, ejecuta npm run dev y abre esta URL en el navegador (http://127.0.0.1:5173/…). " +
+              (e && e.message ? "(" + e.message + ")" : "");
+            status.classList.add("nx-all__status--error");
+          }
+        }
+        nxInitProductGrid();
+      })();
+
+      // Promotion bar carousel
+      (function () {
+        const bar = document.getElementById("announcement-bar");
+        const el = document.getElementById("ann-message");
+        const prevBtn = document.getElementById("ann-prev");
+        const nextBtn = document.getElementById("ann-next");
+        if (!bar || !el || !prevBtn || !nextBtn) return;
+
+        const messages = [
+          "NEW · Carnigen Blue Razz & Dragonfruit",
+          "ENVÍO GRATIS EN COMPRAS MAYORES A $200.000 COP",
+          "LOS MEJORES SUPLEMENTOS DE LAS MEJORES MARCAS",
+        ];
+
+        let i = 0;
+        let timer = null;
+        const dur = 300;
+
+        const render = (nextIndex, direction) => {
+          i = (nextIndex + messages.length) % messages.length;
+          el.style.transition = `opacity ${dur}ms ease, transform ${dur}ms ease`;
+          el.style.opacity = "0";
+          el.style.transform = `translateX(${direction > 0 ? "-8px" : "8px"})`;
+          setTimeout(() => {
+            el.textContent = messages[i];
+            el.style.opacity = "1";
+            el.style.transform = "translateX(0)";
+          }, dur);
+        };
+
+        const start = () => {
+          stop();
+          timer = setInterval(() => render(i + 1, 1), 4200);
+        };
+        const stop = () => {
+          if (timer) clearInterval(timer);
+          timer = null;
+        };
+
+        prevBtn.addEventListener("click", () => {
+          render(i - 1, -1);
+          start();
+        });
+        nextBtn.addEventListener("click", () => {
+          render(i + 1, 1);
+          start();
+        });
+        bar.addEventListener("mouseenter", stop);
+        bar.addEventListener("mouseleave", start);
+        start();
+      })();
+
+      // 2) Scroll behavior (navbar + promo bar)
+      window.addEventListener("scroll", function () {
+        const navbar = document.getElementById("nexorien-navbar");
+        const divider = document.querySelector(".navbar-divider");
+        const bar = document.getElementById("announcement-bar");
+        if (!navbar) return;
+
+        const atTop = window.scrollY === 0;
+
+        // Solo controlamos offsets; estilos "scrolled" se manejan en home/producto.
+        if (bar) {
+          if (atTop) {
+            bar.classList.remove("is-hidden");
+            navbar.style.top = "";
+            if (divider) divider.style.top = "";
+          } else {
+            bar.classList.add("is-hidden");
+            navbar.style.top = "0";
+            if (divider) divider.style.top = "56px";
+          }
+        }
+      });
+
+      // Mobile menu
+      (function () {
+        const overlay = document.getElementById("nx-mobile-menu");
+        const openBtn = document.querySelector(".nx-hamburger");
+        const closeBtn = document.getElementById("nx-mobile-close");
+        const links = Array.from(document.querySelectorAll(".nx-mobile-link"));
+        if (!overlay || !openBtn || !closeBtn) return;
+
+        const open = () => {
+          overlay.classList.add("open");
+          overlay.setAttribute("aria-hidden", "false");
+          document.body.style.overflow = "hidden";
+        };
+        const close = () => {
+          overlay.classList.remove("open");
+          overlay.setAttribute("aria-hidden", "true");
+          document.body.style.overflow = "";
+        };
+        openBtn.addEventListener("click", open);
+        closeBtn.addEventListener("click", close);
+        links.forEach((a) => a.addEventListener("click", close));
+      })();
+
+      // Footer year
+      (() => {
+        const y = document.getElementById("nx-footer-year");
+        if (y) y.textContent = String(new Date().getFullYear());
+      })();
+    </script>
+  </body>
+</html>
+

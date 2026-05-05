@@ -1,0 +1,384 @@
+<!-- =========================================================================
+     PROTHENTIC — Navbar (Standalone Component)
+     - Fixed navbar under announcement bar (offset handled via CSS var).
+     - Desktop: logo left, links center, icons right.
+     - Mobile: hamburger opens drawer menu.
+     - Uses PROTHENTIC design tokens from `nexorien-design-system.css`.
+     ========================================================================= -->
+
+<header class="nx-nav" role="banner" data-navbar>
+  <div class="nx-nav__inner">
+    <a class="nx-nav__brand" href="#" aria-label="Inicio PROTHENTIC">
+      <img
+        src="/assets/isotipo-header.png"
+        alt="PROTHENTIC"
+        class="nx-nav__brand-img"
+      />
+    </a>
+
+    <nav class="nx-nav__links" aria-label="Navegación principal">
+      <a class="nx-nav__link" href="#">PRODUCTOS</a>
+      <a class="nx-nav__link" href="#">APILADOS</a>
+      <a class="nx-nav__link" href="#">ATLETAS</a>
+      <a class="nx-nav__link" href="#">CIENCIA</a>
+      <a class="nx-nav__link" href="#">BLOG</a>
+    </nav>
+
+    <div class="nx-nav__actions">
+      <button class="nx-icon-btn" type="button" aria-label="Buscar">
+        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+          <path
+            fill="currentColor"
+            d="M10 4a6 6 0 1 1 0 12A6 6 0 0 1 10 4m0-2a8 8 0 1 0 4.9 14.3l4.4 4.4 1.4-1.4-4.4-4.4A8 8 0 0 0 10 2Z"
+          />
+        </svg>
+      </button>
+
+      <button class="nx-icon-btn" type="button" aria-label="Cuenta">
+        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+          <path
+            fill="currentColor"
+            d="M12 12a4 4 0 1 0-4-4 4 4 0 0 0 4 4Zm0 2c-4.4 0-8 2.2-8 5v1h16v-1c0-2.8-3.6-5-8-5Z"
+          />
+        </svg>
+      </button>
+
+      <button class="nx-icon-btn nx-cart" type="button" aria-label="Carrito">
+        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+          <path
+            fill="currentColor"
+            d="M7 18a2 2 0 1 0 2 2 2 2 0 0 0-2-2Zm10 0a2 2 0 1 0 2 2 2 2 0 0 0-2-2ZM6.2 6l.6 3h12.1l-1.1 6H7.3l-.2-1H5.1L4 3H1V1h4.3l.6 3H21l-1.7 9.1a2 2 0 0 1-2 1.6H8.1a2 2 0 0 1-2-1.6L4.7 6Z"
+          />
+        </svg>
+        <span class="nx-cart__badge" aria-label="0 productos">0</span>
+      </button>
+
+      <button
+        class="nx-hamburger"
+        type="button"
+        aria-label="Abrir menú"
+        aria-controls="nx-mobile-drawer"
+        aria-expanded="false"
+        data-nav-toggle
+      >
+        <span class="nx-hamburger__bar"></span>
+        <span class="nx-hamburger__bar"></span>
+      </button>
+    </div>
+  </div>
+
+  <div class="nx-drawer" id="nx-mobile-drawer" aria-hidden="true" data-nav-drawer>
+    <div class="nx-drawer__overlay" data-nav-overlay></div>
+    <aside class="nx-drawer__panel" role="dialog" aria-label="Menú móvil">
+      <div class="nx-drawer__top">
+        <span class="nx-drawer__title">MENÚ</span>
+        <button class="nx-icon-btn" type="button" aria-label="Cerrar menú" data-nav-close>
+          ✕
+        </button>
+      </div>
+      <div class="nx-drawer__links">
+        <a class="nx-drawer__link" href="#">PRODUCTOS</a>
+        <a class="nx-drawer__link" href="#">APILADOS</a>
+        <a class="nx-drawer__link" href="#">ATLETAS</a>
+        <a class="nx-drawer__link" href="#">CIENCIA</a>
+        <a class="nx-drawer__link" href="#">BLOG</a>
+      </div>
+      <div class="nx-drawer__cta">
+        <button class="btn-primary" type="button">Comprar</button>
+      </div>
+    </aside>
+  </div>
+</header>
+
+<style>
+  :root {
+    --nx-navbar-height-desktop: 72px;
+    --nx-navbar-height-mobile: 64px;
+    --nx-announcement-offset: var(--nx-announcement-height-desktop, 36px);
+  }
+
+  .nx-nav {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: var(--nx-announcement-offset);
+    z-index: 950;
+    height: var(--nx-navbar-height-desktop);
+    background: rgba(26, 26, 26, 0.72);
+    border-bottom: 1px solid rgba(227, 45, 16, 0.18);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+  }
+
+  .nx-nav__inner {
+    height: 100%;
+    max-width: var(--container-max, 1400px);
+    margin: 0 auto;
+    padding: 0 var(--container-pad-desktop, 24px);
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 18px;
+  }
+
+  .nx-nav__brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+    line-height: 0;
+  }
+
+  .nx-nav__brand-img {
+    height: clamp(40px, 3.5vw + 30px, 54px);
+    width: auto;
+    max-width: min(400px, 88vw);
+    display: block;
+    object-fit: contain;
+  }
+
+  .nx-nav__links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 22px;
+  }
+
+  .nx-nav__link {
+    font-family: var(--font-body);
+    font-size: var(--text-sm);
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(219, 223, 226, 0.92);
+    padding: 10px 8px;
+    border-radius: var(--radius-sm);
+    transition: color var(--transition-base), background var(--transition-base);
+    position: relative;
+  }
+
+  .nx-nav__link:hover {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.04);
+  }
+
+  .nx-nav__actions {
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+    min-width: 160px;
+  }
+
+  .nx-icon-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-sm);
+    border: 1px solid rgba(227, 45, 16, 0.18);
+    background: rgba(255, 255, 255, 0.03);
+    color: rgba(255, 255, 255, 0.92);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast),
+      border-color var(--transition-fast), background var(--transition-fast), color var(--transition-fast);
+  }
+
+  .nx-icon-btn:hover {
+    border-color: rgba(227, 45, 16, 0.5);
+    box-shadow: 0 0 0 1px rgba(227, 45, 16, 0.12), var(--shadow-glow);
+    transform: translateY(-1px);
+    background: rgba(255, 255, 255, 0.06);
+    color: #ffffff;
+  }
+
+  .nx-cart {
+    position: relative;
+  }
+
+  .nx-cart__badge {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    min-width: 18px;
+    height: 18px;
+    padding: 0 6px;
+    border-radius: var(--radius-pill);
+    background: var(--color-accent);
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: 800;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+  }
+
+  .nx-hamburger {
+    display: none;
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-sm);
+    border: 1px solid rgba(227, 45, 16, 0.18);
+    background: rgba(255, 255, 255, 0.03);
+    color: rgba(255, 255, 255, 0.92);
+    cursor: pointer;
+    padding: 0;
+    transition: border-color var(--transition-fast), background var(--transition-fast), transform var(--transition-fast);
+  }
+
+  .nx-hamburger:hover {
+    border-color: rgba(227, 45, 16, 0.5);
+    background: rgba(255, 255, 255, 0.06);
+    transform: translateY(-1px);
+  }
+
+  .nx-hamburger__bar {
+    display: block;
+    width: 18px;
+    height: 2px;
+    background: currentColor;
+    margin: 0 auto;
+  }
+
+  .nx-hamburger__bar + .nx-hamburger__bar {
+    margin-top: 6px;
+  }
+
+  /* Mobile drawer */
+  .nx-drawer {
+    position: fixed;
+    inset: 0;
+    z-index: 940;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity var(--transition-base);
+  }
+
+  .nx-drawer.is-open {
+    pointer-events: auto;
+    opacity: 1;
+  }
+
+  .nx-drawer__overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+  }
+
+  .nx-drawer__panel {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: min(360px, 92vw);
+    background: rgba(26, 26, 26, 0.92);
+    border-left: 1px solid rgba(227, 45, 16, 0.2);
+    box-shadow: var(--shadow-card);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    transform: translateX(16px);
+    transition: transform var(--transition-base);
+    padding: 18px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .nx-drawer.is-open .nx-drawer__panel {
+    transform: translateX(0);
+  }
+
+  .nx-drawer__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(227, 45, 16, 0.18);
+  }
+
+  .nx-drawer__title {
+    font-family: var(--font-body);
+    font-size: var(--text-sm);
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(219, 223, 226, 0.92);
+  }
+
+  .nx-drawer__links {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding-top: 6px;
+  }
+
+  .nx-drawer__link {
+    font-family: var(--font-body);
+    font-size: var(--text-base);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #ffffff;
+    padding: 12px 10px;
+    border-radius: var(--radius-sm);
+    border: 1px solid rgba(227, 45, 16, 0.14);
+    background: rgba(255, 255, 255, 0.03);
+    transition: background var(--transition-base), border-color var(--transition-base), transform var(--transition-fast);
+  }
+
+  .nx-drawer__link:hover {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(227, 45, 16, 0.4);
+    transform: translateY(-1px);
+  }
+
+  .nx-drawer__cta {
+    margin-top: auto;
+    padding-top: 12px;
+    border-top: 1px solid rgba(227, 45, 16, 0.18);
+  }
+
+  @media (max-width: 1024px) {
+    .nx-nav__links {
+      gap: 16px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    :root {
+      --nx-announcement-offset: var(--nx-announcement-height-mobile, 32px);
+    }
+
+    .nx-nav {
+      height: var(--nx-navbar-height-mobile);
+    }
+
+    .nx-nav__inner {
+      padding: 0 var(--container-pad-mobile, 16px);
+      grid-template-columns: 1fr auto;
+      gap: 10px;
+    }
+
+    .nx-nav__brand {
+      min-width: 0;
+    }
+
+    .nx-nav__brand-img {
+      height: clamp(36px, 7vw, 46px);
+    }
+
+    .nx-nav__links {
+      display: none;
+    }
+
+    .nx-hamburger {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+</style>
+

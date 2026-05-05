@@ -1,0 +1,104 @@
+<!-- =========================================================================
+     PROTHENTIC — Announcement Bar (Standalone Component)
+     - Fixed top bar with rotating messages + close button.
+     - Uses PROTHENTIC design tokens from `nexorien-design-system.css`.
+     ========================================================================= -->
+
+<div class="nx-announcement" role="region" aria-label="Anuncios PROTHENTIC" data-announcement>
+  <div class="nx-announcement__inner">
+    <div class="nx-announcement__message" aria-live="polite" aria-atomic="true" data-announcement-message>
+      🚀 ENVÍO GRATIS EN COMPRAS MAYORES A $200.000 COP
+    </div>
+
+    <button class="nx-announcement__close" type="button" aria-label="Cerrar anuncio" data-announcement-close>
+      ✕
+    </button>
+  </div>
+</div>
+
+<style>
+  :root {
+    --nx-announcement-height-desktop: 36px;
+    --nx-announcement-height-mobile: 32px;
+  }
+
+  .nx-announcement {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    height: var(--nx-announcement-height-desktop);
+    background: #000000;
+    color: #ffffff;
+    overflow: hidden;
+    transition: height 300ms ease, opacity 300ms ease;
+  }
+
+  .nx-announcement__inner {
+    height: 100%;
+    max-width: var(--container-max, 1400px);
+    margin: 0 auto;
+    padding: 0 var(--container-pad-desktop, 24px);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .nx-announcement__message {
+    font-family: var(--font-body, 'Montserrat', system-ui, sans-serif);
+    font-size: 10px;
+    font-weight: 700;
+    font-style: normal;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    line-height: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: opacity 400ms ease, transform 400ms ease;
+    will-change: opacity, transform;
+  }
+
+  .nx-announcement__message.is-leaving {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+
+  .nx-announcement__message.is-entering {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  .nx-announcement__close {
+    border: none;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 14px;
+    padding: 0 12px;
+    height: 100%;
+    cursor: pointer;
+    transition: color var(--transition-fast, 150ms ease);
+  }
+
+  .nx-announcement__close:hover {
+    color: rgba(255, 255, 255, 1);
+  }
+
+  .nx-announcement.is-closed {
+    height: 0 !important;
+    opacity: 0;
+  }
+
+  @media (max-width: 768px) {
+    .nx-announcement {
+      height: var(--nx-announcement-height-mobile);
+    }
+
+    .nx-announcement__inner {
+      padding: 0 var(--container-pad-mobile, 16px);
+    }
+  }
+</style>
+
