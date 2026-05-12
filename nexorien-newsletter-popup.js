@@ -154,7 +154,7 @@
         await window.NxShopify.newsletterSubscribe(val);
         status.classList.add("is-ok");
         status.innerHTML =
-          '¡Listo! Tu código es: <strong style="color:#fff;font-size:15px;letter-spacing:0.1em;">BIENVENIDO10</strong> — se aplicará automáticamente.';
+          "¡Listo! Tu 10% de descuento se aplicará automáticamente en tu primera compra.";
         // Guardar descuento para aplicar al carrito
         if (window.NxShopify && window.NxShopify.savePendingDiscount) {
           window.NxShopify.savePendingDiscount("BIENVENIDO10");
