@@ -101,7 +101,7 @@
       "</div>" +
       "</div>" +
       '<div id="nx-nl-popup__body">' +
-      '<p id="nx-nl-popup__sub">Suscríbete con tu email y recibe tu código de descuento al instante. Además, serás el primero en conocer ofertas y nuevos lanzamientos.</p>' +
+      '<p id="nx-nl-popup__sub">Suscríbete y obtén un 10% de descuento en tu primera compra. Además, serás el primero en conocer ofertas y nuevos lanzamientos.</p>' +
       '<form id="nx-nl-popup__form" novalidate>' +
       '<label class="nx-nl-sr-only" for="nx-nl-popup__email">Correo electrónico</label>' +
       '<input id="nx-nl-popup__email" type="email" name="email" autocomplete="email" inputmode="email" placeholder="tu@correo.com" required />' +
