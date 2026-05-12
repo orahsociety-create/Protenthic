@@ -824,6 +824,47 @@
     return !!getCustomerToken();
   }
 
+  async function newsletterSubscribe(email) {
+    const normalized = String(email || "")
+      .trim()
+      .toLowerCase();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(normalized)) {
+      throw new Error("Introduce un correo válido.");
+    }
+
+    function randomPassword() {
+      const chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@%^*?_";
+      const arr = new Uint8Array(28);
+      crypto.getRandomValues(arr);
+      let out = "";
+      for (let i = 0; i < arr.length; i++) out += chars[arr[i] % chars.length];
+      return out + "Aa1";
+    }
+
+    const data = await graphql(CUSTOMER_CREATE, {
+      input: {
+        email: normalized,
+        password: randomPassword(),
+        firstName: "Suscriptor",
+        lastName: "Newsletter",
+        acceptsMarketing: true,
+      },
+    });
+
+    const errs = data.customerCreate?.customerUserErrors || [];
+    if (errs.length) {
+      const joined = errs.map((e) => e.message).join("; ");
+      if (/taken|already|exist|registered|registrado/i.test(joined)) {
+        throw new Error(
+          "Este correo ya tiene cuenta en la tienda. Entra en «Mi cuenta» o usa «Recuperar contraseña»."
+        );
+      }
+      throw new Error(joined);
+    }
+
+    return data.customerCreate?.customer || null;
+  }
+
   async function customerRegister({ firstName, lastName, email, password }) {
     const data = await graphql(CUSTOMER_CREATE, {
       input: { firstName, lastName, email, password },
@@ -998,5 +1039,6 @@
     customerAddressUpdate,
     customerAddressDelete,
     customerDefaultAddressUpdate,
+    newsletterSubscribe,
   };
 })(typeof window !== "undefined" ? window : globalThis);

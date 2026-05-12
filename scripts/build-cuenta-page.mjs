@@ -47,9 +47,8 @@ const navbarInit = `
         if (!bar || !el || !prevBtn || !nextBtn) return;
 
         const messages = [
-          "NOVEDAD · Carnigen Blue Razz & Dragonfruit",
-          "ENVÍO GRATIS EN COMPRAS MAYORES A $200.000 COP",
-          "LOS MEJORES SUPLEMENTOS DE LAS MEJORES MARCAS",
+          "los mejores suplemenos de las mejores marcas",
+          "entregas rapidas a todo el pais",
         ];
 
         let i = 0;

@@ -1,0 +1,648 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>PROTHENTIC — Información y políticas</title>
+    <meta name="description" content="Política de devoluciones, términos del servicio, privacidad y preguntas frecuentes de envío — PROTHENTIC Colombia." />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="PROTHENTIC" />
+    <meta property="og:title" content="PROTHENTIC — Información y políticas" />
+    <meta property="og:image" content="/assets/isotipo-prothentic-red.png" />
+    <link rel="icon" type="image/png" href="/assets/isotipo-prothentic-red.png" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@1,800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+    <link rel="stylesheet" href="./nexorien-design-system.css" />
+    <style>
+      .visually-hidden {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
+
+      .nx-legal-page {
+        max-width: 880px;
+        margin: 0 auto;
+        padding: calc(40px + 68px + 28px) clamp(20px, 4vw, 48px) 72px;
+        font-family: "Montserrat", system-ui, sans-serif;
+        color: rgba(18, 18, 22, 0.92);
+      }
+
+      .nx-legal-page__title {
+        font-family: var(--font-display-brand);
+        font-weight: 900;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        font-size: clamp(1.35rem, 2vw + 0.85rem, 1.85rem);
+        margin: 0 0 12px;
+        line-height: 1.15;
+      }
+
+      .nx-legal-page__lead {
+        margin: 0 0 28px;
+        font-size: 15px;
+        line-height: 1.55;
+        color: rgba(18, 18, 22, 0.62);
+      }
+
+      .nx-legal-page__tabs {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 28px;
+      }
+
+      .nx-legal-page__tab {
+        font-family: "Montserrat", system-ui, sans-serif;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        padding: 10px 14px;
+        border-radius: 999px;
+        border: 1px solid rgba(18, 18, 22, 0.14);
+        background: #fff;
+        color: rgba(18, 18, 22, 0.75);
+        cursor: pointer;
+        transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+      }
+
+      .nx-legal-page__tab:hover {
+        border-color: rgba(227, 45, 16, 0.45);
+        color: #c0260e;
+      }
+
+      .nx-legal-page__tab[aria-selected="true"] {
+        background: #e32d10;
+        border-color: #e32d10;
+        color: #fff;
+      }
+
+      .nx-legal-page__panel {
+        display: none;
+        padding: 28px clamp(18px, 3vw, 28px);
+        border-radius: 14px;
+        background: #fafafa;
+        border: 1px solid rgba(0, 0, 0, 0.06);
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.04);
+      }
+
+      .nx-legal-page__panel.is-active {
+        display: block;
+      }
+
+      .nx-legal-page__panel h2 {
+        font-size: 1.15rem;
+        font-weight: 700;
+        margin: 0 0 18px;
+        color: rgba(18, 18, 22, 0.95);
+      }
+
+      .nx-legal-page__panel h3 {
+        font-size: 0.95rem;
+        font-weight: 700;
+        margin: 22px 0 10px;
+        color: rgba(18, 18, 22, 0.88);
+      }
+
+      .nx-legal-page__panel p,
+      .nx-legal-page__panel li {
+        font-size: 14px;
+        line-height: 1.6;
+        color: rgba(18, 18, 22, 0.72);
+      }
+
+      .nx-legal-page__panel p {
+        margin: 0 0 12px;
+      }
+
+      .nx-legal-page__panel ul {
+        margin: 0 0 14px;
+        padding-left: 1.25rem;
+      }
+
+      .nx-legal-page__panel li {
+        margin-bottom: 6px;
+      }
+
+      .nx-legal-page__note {
+        margin-top: 20px;
+        padding: 14px 16px;
+        border-radius: 10px;
+        background: rgba(227, 45, 16, 0.06);
+        border: 1px solid rgba(227, 45, 16, 0.12);
+        font-size: 13px;
+        line-height: 1.5;
+        color: rgba(18, 18, 22, 0.68);
+      }
+
+      .nx-footer-min {
+        border-top: 1px solid rgba(0, 0, 0, 0.06);
+        background: #f4f4f4;
+      }
+
+      .nx-footer-min__inner {
+        max-width: 1440px;
+        margin: 0 auto;
+        padding: 20px clamp(20px, 4vw, 48px);
+      }
+
+      .nx-footer-min__legal {
+        margin: 0;
+        font-family: "Montserrat", system-ui, sans-serif;
+        font-size: 12px;
+        color: rgba(18, 18, 22, 0.55);
+        text-align: center;
+      }
+
+      .nx-footer-min__credit {
+        margin: 10px 0 0;
+        font-family: "Montserrat", system-ui, sans-serif;
+        font-size: 11px;
+        color: rgba(18, 18, 22, 0.42);
+        text-align: center;
+        line-height: 1.45;
+      }
+
+      .nx-footer-min__credit a {
+        color: inherit;
+        text-decoration: underline;
+        text-underline-offset: 2px;
+      }
+
+      .nx-footer-min__credit a:hover {
+        color: #e32d10;
+      }
+
+      .navbar-divider--light {
+        background: linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, 0.07) 30%, rgba(0, 0, 0, 0.07) 70%, transparent 100%);
+      }
+    </style>
+  </head>
+  <body>
+    <div id="announcement-bar" class="nx-announcement" role="region" aria-label="Promociones PROTHENTIC">
+      <div class="nx-announcement__inner">
+        <div class="nx-announcement__track" aria-hidden="false">
+          <button id="ann-prev" class="nx-announcement__nav nx-announcement__nav--prev" type="button" aria-label="Promoción anterior">
+            &#8249;
+          </button>
+          <div id="ann-message" class="nx-announcement__message" aria-live="polite" aria-atomic="true">
+            Envíos a todo Colombia · Bogotá, principales ciudades y municipios cubiertos por nuestras transportadoras
+          </div>
+          <button id="ann-next" class="nx-announcement__nav nx-announcement__nav--next" type="button" aria-label="Siguiente promoción">
+            &#8250;
+          </button>
+        </div>
+        <a class="nx-announcement__brand" href="./index.html" aria-label="PROTHENTIC">
+          <img class="nx-announcement__brand-img" src="/assets/logo-prothentic-white.png" alt="PROTHENTIC" decoding="async" />
+        </a>
+      </div>
+    </div>
+
+    <header id="nexorien-navbar" class="nx-navbar nx-navbar--light" role="banner">
+      <div class="nx-navbar__inner">
+        <a class="nx-navbar__logo" href="./index.html" aria-label="Inicio PROTHENTIC">
+          <img
+            class="nx-navbar__logo-img nx-navbar__logo-img--default"
+            src="/assets/logo-prothentic-dark.png"
+            alt="PROTHENTIC"
+            width="180"
+            height="48"
+            decoding="async"
+          />
+        </a>
+
+        <ul class="nx-navbar__nav" aria-label="Navegación principal">
+          <li class="nx-nav-item">
+            <a class="nx-navbar__link" href="./todos-los-productos.html">TODOS LOS PRODUCTOS</a>
+          </li>
+          <li class="nx-nav-item"><a class="nx-navbar__link" href="./todos-los-productos.html?collection=proteinas-1">PROTEÍNAS</a></li>
+          <li class="nx-nav-item"><a class="nx-navbar__link" href="./todos-los-productos.html?collection=pre-entrenos-1">PRE-ENTRENOS</a></li>
+          <li class="nx-nav-item"><a class="nx-navbar__link" href="./todos-los-productos.html?collection=construir-musculo-1">CONSTRUIR MÚSCULO</a></li>
+          <li class="nx-nav-item"><a class="nx-navbar__link" href="./todos-los-productos.html?collection=salud-y-bienestar-1">SALUD Y BIENESTAR</a></li>
+          <li class="nx-nav-item"><a class="nx-navbar__link" href="./todos-los-productos.html?collection=manejo-de-peso-1">MANEJO DE PESO</a></li>
+          <li class="nx-nav-item"><a class="nx-navbar__link" href="./todos-los-productos.html?collection=ropa-y-accesorios">ROPA Y ACCESORIOS</a></li>
+        </ul>
+
+        <div class="nx-navbar__right">
+          <button class="nx-hamburger" type="button" aria-label="Abrir menú" aria-controls="nx-mobile-menu">
+            <span class="nx-hamburger__bar"></span>
+            <span class="nx-hamburger__bar"></span>
+            <span class="nx-hamburger__bar"></span>
+          </button>
+
+          <div class="nx-icons">
+            <button class="nx-icon" type="button" aria-label="Buscar">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8" />
+                <line x1="21" y1="21" x2="16.65" y2="16.65" />
+              </svg>
+            </button>
+            <button class="nx-icon" type="button" aria-label="Cuenta">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                <circle cx="12" cy="7" r="4" />
+              </svg>
+            </button>
+            <div class="nx-cart-wrap" style="position: relative; display: inline-flex">
+              <button class="nx-icon" type="button" aria-label="Carrito">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
+                  <line x1="3" y1="6" x2="21" y2="6" />
+                  <path d="M16 10a4 4 0 0 1-8 0" />
+                </svg>
+              </button>
+              <span class="nx-cart-badge">0</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="navbar-divider navbar-divider--light"></div>
+
+    <div id="nx-mobile-menu" class="nx-mobile-menu" aria-hidden="true">
+      <button id="nx-mobile-close" class="nx-mobile-close" type="button" aria-label="Cerrar menú">✕</button>
+      <a class="nx-mobile-link" href="./todos-los-productos.html">TODOS LOS PRODUCTOS</a>
+      <a class="nx-mobile-link" href="./todos-los-productos.html?collection=proteinas-1">PROTEÍNAS</a>
+      <a class="nx-mobile-link" href="./todos-los-productos.html?collection=pre-entrenos-1">PRE-ENTRENOS</a>
+      <a class="nx-mobile-link" href="./todos-los-productos.html?collection=construir-musculo-1">CONSTRUIR MÚSCULO</a>
+      <a class="nx-mobile-link" href="./todos-los-productos.html?collection=salud-y-bienestar-1">SALUD Y BIENESTAR</a>
+      <a class="nx-mobile-link" href="./todos-los-productos.html?collection=manejo-de-peso-1">MANEJO DE PESO</a>
+      <a class="nx-mobile-link" href="./todos-los-productos.html?collection=ropa-y-accesorios">ROPA Y ACCESORIOS</a>
+      <a class="nx-mobile-link" href="./informacion-cliente.html">INFORMACIÓN AL CLIENTE</a>
+    </div>
+
+    <main class="nx-legal-page" aria-labelledby="nx-legal-main-title">
+      <h1 class="nx-legal-page__title" id="nx-legal-main-title">Información al cliente</h1>
+      <p class="nx-legal-page__lead">
+        Consulta nuestras políticas y respuestas frecuentes sobre envíos en Colombia. Elige un tema para ver el detalle.
+      </p>
+
+      <div class="nx-legal-page__tabs" role="tablist" aria-label="Información legal y envíos">
+        <button type="button" class="nx-legal-page__tab" role="tab" id="tab-devoluciones" aria-controls="devoluciones" aria-selected="false">
+          Política de devoluciones
+        </button>
+        <button type="button" class="nx-legal-page__tab" role="tab" id="tab-terminos" aria-controls="terminos" aria-selected="false">
+          Términos del servicio
+        </button>
+        <button type="button" class="nx-legal-page__tab" role="tab" id="tab-privacidad" aria-controls="privacidad" aria-selected="false">
+          Privacidad y cookies
+        </button>
+        <button type="button" class="nx-legal-page__tab" role="tab" id="tab-envios" aria-controls="envios" aria-selected="false">
+          Preguntas frecuentes de envío
+        </button>
+      </div>
+
+      <section class="nx-legal-page__panel" id="devoluciones" role="tabpanel" aria-labelledby="tab-devoluciones" hidden>
+        <h2>Política de devoluciones</h2>
+        <p>
+          En PROTHENTIC queremos que compres con tranquilidad. Esta política complementa los derechos que tienes como consumidor en Colombia conforme a la
+          legislación aplicable (incluida la Ley 1480 de 2011 y normas concordantes).
+        </p>
+        <h3>1. Plazo para solicitar cambios o devoluciones</h3>
+        <p>
+          Para productos adquiridos a distancia, puedes solicitar la reversión del pago o el cambio del bien dentro de los <strong>cinco (5) días hábiles</strong>
+          siguientes a la entrega, siempre que se cumplan las condiciones de estado del producto indicadas abajo. Si el motivo es un defecto no imputable al
+          comprador o discrepancia respecto a lo ofrecido, aplican las garantías legales y el plazo correspondiente según el caso.
+        </p>
+        <h3>2. Condiciones del producto</h3>
+        <ul>
+          <li>El producto debe estar en condiciones de ser comercializado nuevamente: sin uso, empaque original cerrado y etiquetas intactas.</li>
+          <li>
+            Por razones de higiene y seguridad sanitaria, <strong>no aceptamos devoluciones de suplementos alimenticios o productos que hayan sido abiertos</strong>,
+            salvo defecto de fabricación o error nuestro debidamente acreditado.
+          </li>
+          <li>Debes conservar factura electrónica de venta o comprobante equivalente y el número de pedido.</li>
+        </ul>
+        <h3>3. Cómo iniciar una solicitud</h3>
+        <p>
+          Escríbenos a <strong>prothenticoficial@gmail.com</strong> con el asunto «Devolución — [número de pedido]», adjunta fotos del producto y del empaque, y
+          describe el motivo. Nuestro equipo te responderá en un plazo máximo de <strong>tres (3) días hábiles</strong> con instrucciones para el siguiente paso.
+        </p>
+        <h3>4. Costos de envío</h3>
+        <p>
+          Cuando la devolución procede por motivos imputables a PROTHENTIC (producto incorrecto, defectuoso sin uso indebido, etc.), los costos logísticos asociados
+          corren por nuestra cuenta conforme a lo indicado en cada caso. Si la devolución es por arrepentimiento dentro del plazo legal y el producto cumple los
+          requisitos, los costos del envío de regreso pueden ser asumidos por el cliente según acuerdo con la transportadora y nuestras políticas operativas vigentes,
+          lo cual te comunicaremos de forma clara antes de autorizar la devolución.
+        </p>
+        <h3>5. Reembolsos</h3>
+        <p>
+          Una vez recibido y verificado el producto en nuestro punto de revisión en Bogotá, procesamos el reembolso por el mismo medio de pago utilizado en la compra,
+          en un plazo aproximado de <strong>quince (15) días hábiles</strong>, sujeto a tiempos del sistema financiero.
+        </p>
+        <p class="nx-legal-page__note">
+          Esta información es de carácter general. Los contratos de compraventa celebrados a través de nuestra tienda pueden establecer condiciones adicionales que
+          no contradigan la ley colombiana.
+        </p>
+      </section>
+
+      <section class="nx-legal-page__panel" id="terminos" role="tabpanel" aria-labelledby="tab-terminos" hidden>
+        <h2>Términos del servicio</h2>
+        <p>
+          El uso del sitio web y la compra de productos en PROTHENTIC implica la aceptación de estos términos. Si no estás de acuerdo, te pedimos no utilizar nuestros
+          canales de venta en línea.
+        </p>
+        <h3>1. Identificación</h3>
+        <p>
+          PROTHENTIC es un comercio orientado a la venta minorista de suplementos y artículos deportivos con despacho en territorio colombiano. Los datos de contacto
+          publicados en el sitio son los canales oficiales para consultas sobre pedidos y soporte.
+        </p>
+        <h3>2. Capacidad legal y uso del sitio</h3>
+        <p>
+          Al registrarte o comprar declaras ser mayor de edad según la legislación colombiana y que la información suministrada es veraz. Queda prohibido el uso del
+          sitio para fines fraudulentos, revendedores no autorizados cuando así se indique en campañas específicas, o cualquier actividad que afecte la seguridad de la
+          plataforma.
+        </p>
+        <h3>3. Precios, IVA y disponibilidad</h3>
+        <p>
+          Los precios publicados están expresados en <strong>pesos colombianos (COP)</strong> e incluyen IVA salvo indicación contraria en la ficha del producto. Las
+          promociones tienen vigencia limitada y pueden modificarse sin previo aviso mientras no exista un pedido confirmado y pagado. La disponibilidad es estimada;
+          si un ítem no puede cumplirse, te notificaremos para ofrecerte cambio, espera de reposición o reversión del pago.
+        </p>
+        <h3>4. Contratación electrónica</h3>
+        <p>
+          El pedido se entiende perfeccionado cuando recibes la confirmación por correo electrónico o por el sistema de la tienda y el pago ha sido autorizado. Las
+          facturas electrónicas se emiten conforme a los requisitos de la DIAN y las normas tributarias aplicables.
+        </p>
+        <h3>5. Propiedad intelectual</h3>
+        <p>
+          Marcas, fotografías, textos y diseño del sitio están protegidos. No está permitida su reproducción comercial sin autorización escrita de PROTHENTIC o del
+          titular correspondiente.
+        </p>
+        <h3>6. Ley aplicable y domicilio contractual</h3>
+        <p>
+          Estos términos se interpretan según las leyes de la República de Colombia. Para efectos de notificaciones y controversias, salvo norma imperativa en contrario,
+          las partes se someten a los jueces de la ciudad de <strong>Bogotá D.C.</strong>
+        </p>
+      </section>
+
+      <section class="nx-legal-page__panel" id="privacidad" role="tabpanel" aria-labelledby="tab-privacidad" hidden>
+        <h2>Privacidad y cookies</h2>
+        <p>
+          PROTHENTIC trata datos personales en cumplimiento de la Constitución Política, la <strong>Ley 1581 de 2012</strong> (política general de protección de datos
+          personales en Colombia), el Decreto 1377 de 2013 y normas concordantes.
+        </p>
+        <h3>1. Responsable del tratamiento</h3>
+        <p>
+          El responsable del tratamiento es PROTHENTIC, identificado ante los usuarios mediante los datos de contacto publicados en este sitio. Para ejercer tus
+          derechos de conocer, actualizar, rectificar y suprimir información, y revocar la autorización, puedes escribir a <strong>prothenticoficial@gmail.com</strong>.
+        </p>
+        <h3>2. Datos que recopilamos</h3>
+        <ul>
+          <li>Datos de identificación y contacto (nombre, teléfono, correo, dirección de entrega).</li>
+          <li>Datos transaccionales (historial de pedidos, medio de pago limitado a lo necesario para la operación con pasarelas autorizadas).</li>
+          <li>
+            Datos técnicos mediante cookies o tecnologías similares (por ejemplo tipo de navegador, páginas visitadas y duración aproximada de la sesión) para mejorar
+            el funcionamiento del sitio y medir audiencia.
+          </li>
+        </ul>
+        <h3>3. Finalidades</h3>
+        <ul>
+          <li>Gestionar registro, compras, entregas, facturación y servicio postventa.</li>
+          <li>Enviar comunicaciones comerciales cuando hayas dado tu consentimiento o exista habilitación legal.</li>
+          <li>Cumplir obligaciones legales (tributarias, contables, prevención de fraude).</li>
+          <li>Mejorar la experiencia de navegación y seguridad de la plataforma.</li>
+        </ul>
+        <h3>4. Cookies</h3>
+        <p>
+          Utilizamos cookies necesarias para el funcionamiento del carrito y la sesión, y cookies analíticas para entender el uso del sitio de forma agregada. Puedes
+          configurar tu navegador para bloquear cookies; algunas funciones podrían verse limitadas.
+        </p>
+        <h3>5. Transferencia y conservación</h3>
+        <p>
+          Tus datos pueden ser tratados por proveedores de hosting, pasarelas de pago y transportadoras estrictamente para las finalidades descritas. Conservamos la
+          información el tiempo necesario para cumplir la ley y resolver reclamos.
+        </p>
+        <h3>6. Actualizaciones</h3>
+        <p>
+          Esta política puede actualizarse para reflejar cambios normativos o del negocio. Publicaremos la versión vigente en esta página con la fecha de última
+          actualización que figure al final del documento en futuras revisiones.
+        </p>
+      </section>
+
+      <section class="nx-legal-page__panel" id="envios" role="tabpanel" aria-labelledby="tab-envios" hidden>
+        <h2>Preguntas frecuentes de envío</h2>
+        <h3>¿Envían a todo Colombia?</h3>
+        <p>
+          Realizamos envíos a las principales ciudades y municipios cubiertos por nuestras transportadoras aliadas. Si tu dirección está en zona rural, vereda o punto
+          apartado, el tiempo de entrega puede ser mayor y algunos destinos requieren confirmación previa de cobertura.
+        </p>
+        <h3>¿Cuánto tarda la entrega?</h3>
+        <p>
+          Los tiempos son orientativos y cuentan desde la confirmación del pago y el despacho del almacén en Bogotá: <strong>1 a 3 días hábiles</strong> en Bogotá y
+          área metropolitana; <strong>2 a 5 días hábiles</strong> en capitales de departamento y ciudades intermedias; y hasta <strong>7 a 12 días hábiles</strong> en
+          zonas remotas o con conexiones logísticas limitadas. Feriados, factores climáticos o de orden público pueden extender estos plazos.
+        </p>
+        <h3>¿Cómo rastreo mi pedido?</h3>
+        <p>
+          Cuando tu pedido sea despachado recibirás una guía de transporte por correo electrónico o WhatsApp (según el canal indicado en la compra). Con ese número
+          puedes consultar el estado del envío en la página web de la transportadora.
+        </p>
+        <h3>¿Cuánto cuesta el envío?</h3>
+        <p>
+          El valor del envío se calcula en el checkout según ciudad, peso volumétrico y tarifas vigentes de la transportadora. En campañas específicas puede aplicarse
+          <strong>envío gratis</strong> por compras superiores a un monto publicado en el sitio; esa condición se mostrará claramente antes de pagar.
+        </p>
+        <h3>¿Qué pasa si no estoy en casa?</h3>
+        <p>
+          La transportadora suele intentar la entrega en más de una ocasión. Si el paquete es devuelto por falta de contacto, podemos coordinar un nuevo envío con costo
+          adicional según políticas operativas vigentes.
+        </p>
+        <h3>¿Puedo cambiar la dirección después de pagar?</h3>
+        <p>
+          Si el pedido aún no ha sido despachado, escríbenos lo antes posible a <strong>prothenticoficial@gmail.com</strong> o por WhatsApp al número publicado en el
+          sitio. Una vez generada la guía, el cambio puede estar sujeto a políticas de la transportadora.
+        </p>
+      </section>
+    </main>
+
+    <footer class="nx-footer-min" role="contentinfo">
+      <div class="nx-footer-min__inner">
+        <p class="nx-footer-min__legal">
+          © <span id="nx-footer-year">2026</span>, PROTHENTIC · Los mejores suplementos de las mejores marcas
+        </p>
+        <p class="nx-footer-min__credit">
+          Sitio creado por <a href="https://orah.solutions.com" target="_blank" rel="noopener noreferrer">Orah Solutions</a>.
+        </p>
+      </div>
+    </footer>
+
+    <script src="./nexorien-shopify.js"></script>
+    <script src="./nexorien-cart.js"></script>
+    <script src="./nexorien-navbar-actions.js"></script>
+    <script>
+      (function () {
+        var VALID = ["devoluciones", "terminos", "privacidad", "envios"];
+        var tabs = Array.from(document.querySelectorAll(".nx-legal-page__tab"));
+        var panels = VALID.map(function (id) {
+          return document.getElementById(id);
+        }).filter(Boolean);
+
+        function show(panelId, opts) {
+          opts = opts || {};
+          var id = VALID.indexOf(panelId) >= 0 ? panelId : "devoluciones";
+          tabs.forEach(function (btn) {
+            var sel = btn.getAttribute("aria-controls") === id;
+            btn.setAttribute("aria-selected", sel ? "true" : "false");
+            btn.tabIndex = sel ? 0 : -1;
+          });
+          panels.forEach(function (p) {
+            var on = p.id === id;
+            p.classList.toggle("is-active", on);
+            p.hidden = !on;
+          });
+          if (!opts.replaceOnly && history.replaceState) {
+            try {
+              history.replaceState(null, "", "#" + id);
+            } catch (e) {}
+          }
+        }
+
+        tabs.forEach(function (btn) {
+          btn.addEventListener("click", function () {
+            show(btn.getAttribute("aria-controls"), {});
+          });
+          btn.addEventListener("keydown", function (e) {
+            var ix = tabs.indexOf(btn);
+            if (e.key === "ArrowRight" || e.key === "ArrowDown") {
+              e.preventDefault();
+              var n = tabs[(ix + 1) % tabs.length];
+              n.focus();
+              show(n.getAttribute("aria-controls"), {});
+            }
+            if (e.key === "ArrowLeft" || e.key === "ArrowUp") {
+              e.preventDefault();
+              var pr = tabs[(ix - 1 + tabs.length) % tabs.length];
+              pr.focus();
+              show(pr.getAttribute("aria-controls"), {});
+            }
+          });
+        });
+
+        function fromHash() {
+          var h = (location.hash || "").replace(/^#/, "");
+          return VALID.indexOf(h) >= 0 ? h : "devoluciones";
+        }
+
+        show(fromHash(), { replaceOnly: true });
+        window.addEventListener("hashchange", function () {
+          show(fromHash(), { replaceOnly: true });
+        });
+      })();
+
+      (function () {
+        var bar = document.getElementById("announcement-bar");
+        var el = document.getElementById("ann-message");
+        var prevBtn = document.getElementById("ann-prev");
+        var nextBtn = document.getElementById("ann-next");
+        if (!bar || !el || !prevBtn || !nextBtn) return;
+
+        var messages = [
+          "Envíos a todo Colombia · Bogotá, principales ciudades y municipios cubiertos por nuestras transportadoras",
+          "Los mejores suplementos de las mejores marcas",
+        ];
+
+        var i = 0;
+        var timer = null;
+        var dur = 300;
+
+        function render(nextIndex, direction) {
+          i = (nextIndex + messages.length) % messages.length;
+          el.style.transition = "opacity " + dur + "ms ease, transform " + dur + "ms ease";
+          el.style.opacity = "0";
+          el.style.transform = "translateX(" + (direction > 0 ? "-8px" : "8px") + ")";
+          setTimeout(function () {
+            el.textContent = messages[i];
+            el.style.opacity = "1";
+            el.style.transform = "translateX(0)";
+          }, dur);
+        }
+
+        function start() {
+          stop();
+          timer = setInterval(function () {
+            render(i + 1, 1);
+          }, 4200);
+        }
+        function stop() {
+          if (timer) clearInterval(timer);
+          timer = null;
+        }
+
+        prevBtn.addEventListener("click", function () {
+          render(i - 1, -1);
+          start();
+        });
+        nextBtn.addEventListener("click", function () {
+          render(i + 1, 1);
+          start();
+        });
+        bar.addEventListener("mouseenter", stop);
+        bar.addEventListener("mouseleave", start);
+        start();
+      })();
+
+      window.addEventListener("scroll", function () {
+        var navbar = document.getElementById("nexorien-navbar");
+        var divider = document.querySelector(".navbar-divider");
+        var bar = document.getElementById("announcement-bar");
+        if (!navbar) return;
+
+        var atTop = window.scrollY === 0;
+
+        if (bar) {
+          if (atTop) {
+            bar.classList.remove("is-hidden");
+            navbar.style.top = "";
+            if (divider) divider.style.top = "";
+          } else {
+            bar.classList.add("is-hidden");
+            navbar.style.top = "0";
+            if (divider) divider.style.top = "56px";
+          }
+        }
+      });
+
+      (function () {
+        var overlay = document.getElementById("nx-mobile-menu");
+        var openBtn = document.querySelector(".nx-hamburger");
+        var closeBtn = document.getElementById("nx-mobile-close");
+        var links = Array.from(document.querySelectorAll(".nx-mobile-link"));
+        if (!overlay || !openBtn || !closeBtn) return;
+
+        function open() {
+          overlay.classList.add("open");
+          overlay.setAttribute("aria-hidden", "false");
+          document.body.style.overflow = "hidden";
+        }
+        function close() {
+          overlay.classList.remove("open");
+          overlay.setAttribute("aria-hidden", "true");
+          document.body.style.overflow = "";
+        }
+        openBtn.addEventListener("click", open);
+        closeBtn.addEventListener("click", close);
+        links.forEach(function (a) {
+          return a.addEventListener("click", close);
+        });
+      })();
+
+      (function () {
+        var y = document.getElementById("nx-footer-year");
+        if (y) y.textContent = String(new Date().getFullYear());
+      })();
+    </script>
+  </body>
+</html>

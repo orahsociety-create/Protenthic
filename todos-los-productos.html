@@ -222,6 +222,9 @@
     <footer class="nx-footer-min" role="contentinfo">
       <div class="nx-footer-min__inner">
         <p class="nx-footer-min__legal">© <span id="nx-footer-year">2026</span>, PROTHENTIC · Los mejores suplementos de las mejores marcas</p>
+        <p class="nx-footer-min__credit">
+          Sitio creado por <a href="https://orah.solutions.com" target="_blank" rel="noopener noreferrer">Orah Solutions</a>.
+        </p>
       </div>
     </footer>
 
@@ -858,6 +861,24 @@
         font-size: 12px;
         color: #666;
         font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      }
+
+      .nx-footer-min__credit {
+        margin: 8px 0 0;
+        font-size: 11px;
+        color: #888;
+        font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+        line-height: 1.45;
+      }
+
+      .nx-footer-min__credit a {
+        color: inherit;
+        text-decoration: underline;
+        text-underline-offset: 2px;
+      }
+
+      .nx-footer-min__credit a:hover {
+        color: #e32d10;
       }
 
       @media (max-width: 1100px) {
@@ -1558,9 +1579,8 @@
         if (!bar || !el || !prevBtn || !nextBtn) return;
 
         const messages = [
-          "NEW · Carnigen Blue Razz & Dragonfruit",
-          "ENVÍO GRATIS EN COMPRAS MAYORES A $200.000 COP",
-          "LOS MEJORES SUPLEMENTOS DE LAS MEJORES MARCAS",
+          "los mejores suplemenos de las mejores marcas",
+          "entregas rapidas a todo el pais",
         ];
 
         let i = 0;
