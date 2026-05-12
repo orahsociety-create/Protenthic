@@ -3726,6 +3726,13 @@
         align-items: center;
         gap: 10px;
         max-width: calc(100vw - 36px);
+        transition: opacity 0.28s ease, visibility 0.28s ease;
+      }
+
+      .nx-footer__chat-wrap.is-suppressed-by-footer {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
       }
 
       .nx-footer__chat-hint {
@@ -4141,6 +4148,20 @@
             sessionStorage.setItem("nxWaHintDismissed", "1");
           } catch (_) {}
         });
+
+        const bottomStrip = document.querySelector(".nx-footer__bottom");
+        if (bottomStrip && "IntersectionObserver" in window) {
+          const io = new IntersectionObserver(
+            (entries) => {
+              const visible = entries.some((en) => en.isIntersecting);
+              wrap.classList.toggle("is-suppressed-by-footer", visible);
+              if (visible) wrap.setAttribute("aria-hidden", "true");
+              else wrap.removeAttribute("aria-hidden");
+            },
+            { root: null, threshold: 0, rootMargin: "0px 0px 8px 0px" }
+          );
+          io.observe(bottomStrip);
+        }
       })();
 
       // 1b) Mega menús — aria (cada panel es hijo de su <li> para hover continuo)
