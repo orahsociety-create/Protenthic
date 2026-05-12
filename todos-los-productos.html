@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="./nexorien-design-system.css" />
   </head>
   <body>
-    <!-- Navbar reutilizada (versión simplificada para página de colección). -->
+    <!-- Navbar igual que en home (mega menús + catálogo). -->
     <div id="announcement-bar" class="nx-announcement" role="region" aria-label="Promociones PROTHENTIC">
       <div class="nx-announcement__inner">
         <div class="nx-announcement__track" aria-hidden="false">
@@ -33,7 +33,7 @@
             &#8249;
           </button>
           <div id="ann-message" class="nx-announcement__message" aria-live="polite" aria-atomic="true">
-            NOVEDAD · Carnigen Blue Razz &amp; Dragonfruit
+            los mejores suplemenos de las mejores marcas
           </div>
           <button id="ann-next" class="nx-announcement__nav nx-announcement__nav--next" type="button" aria-label="Siguiente promoción">
             &#8250;
@@ -45,7 +45,7 @@
       </div>
     </div>
 
-    <header id="nexorien-navbar" class="nx-navbar nx-navbar--light" role="banner">
+    <header id="nexorien-navbar" class="nx-navbar" role="banner">
       <div class="nx-navbar__inner">
         <a class="nx-navbar__logo" href="./index.html" aria-label="Inicio PROTHENTIC">
           <img
@@ -56,18 +56,429 @@
             height="48"
             decoding="async"
           />
+          <img
+            class="nx-navbar__logo-img nx-navbar__logo-img--inverse"
+            src="/assets/logo-prothentic-color.png"
+            alt=""
+            width="180"
+            height="48"
+            decoding="async"
+            aria-hidden="true"
+          />
         </a>
 
         <ul class="nx-navbar__nav" aria-label="Navegación principal">
           <li class="nx-nav-item">
             <a class="nx-navbar__link" href="./todos-los-productos.html">TODOS LOS PRODUCTOS</a>
           </li>
-          <li class="nx-nav-item"><a class="nx-navbar__link" href="./todos-los-productos.html?collection=proteinas-1">PROTEÍNAS</a></li>
-          <li class="nx-nav-item"><a class="nx-navbar__link" href="./todos-los-productos.html?collection=pre-entrenos-1">PRE-ENTRENOS</a></li>
-          <li class="nx-nav-item"><a class="nx-navbar__link" href="./todos-los-productos.html?collection=construir-musculo-1">CONSTRUIR MÚSCULO</a></li>
-          <li class="nx-nav-item"><a class="nx-navbar__link" href="./todos-los-productos.html?collection=salud-y-bienestar-1">SALUD Y BIENESTAR</a></li>
-          <li class="nx-nav-item"><a class="nx-navbar__link" href="./todos-los-productos.html?collection=manejo-de-peso-1">MANEJO DE PESO</a></li>
-          <li class="nx-nav-item"><a class="nx-navbar__link" href="./todos-los-productos.html?collection=ropa-y-accesorios">ROPA Y ACCESORIOS</a></li>
+          <li class="nx-nav-item nx-nav-item--mega">
+            <a class="nx-navbar__link" href="./todos-los-productos.html?collection=proteinas-1" aria-expanded="false" id="nx-mega-proteina-trigger">PROTEÍNAS</a>
+            <div class="nx-mega" id="nx-mega-proteina" role="region" aria-labelledby="nx-mega-proteina-trigger" aria-hidden="true" data-collection-handle="proteinas-1">
+              <div class="nx-mega__inner">
+                <div class="nx-mega__main">
+                  <p class="nx-mega__eyebrow">PROTEÍNAS</p>
+                  <div class="nx-mega__grid" data-mega-grid>
+                    <a class="nx-mega-product" href="#">
+                      <div class="nx-mega-product__img-wrap">
+                        <img class="nx-mega-product__img" src="https://www.evogennutrition.com/cdn/shop/files/IsoJect_rendersNOBAND2026redvelvetfront.png?v=1772732563&width=160" alt="" width="160" height="160" loading="lazy" />
+                      </div>
+                      <div class="nx-mega-product__body">
+                        <span class="nx-mega-product__title">Isoject Whey Protein Isolate</span>
+                        <span class="nx-mega-product__desc">Proteína de suero aislada de alta pureza para recuperación y músculo magro, con digestión ligera.</span>
+                      </div>
+                    </a>
+                    <a class="nx-mega-product" href="#">
+                      <div class="nx-mega-product__img-wrap">
+                        <img class="nx-mega-product__img" src="https://www.evogennutrition.com/cdn/shop/files/IsoJect_rendersNOBAND2026redvelvetfront.png?v=1772732563&width=160" alt="" width="160" height="160" loading="lazy" />
+                      </div>
+                      <div class="nx-mega-product__body">
+                        <span class="nx-mega-product__title">Isoject — otro sabor (placeholder)</span>
+                        <span class="nx-mega-product__desc">Segundo slot de producto. En Shopify será otro ítem de la misma colección.</span>
+                      </div>
+                    </a>
+                    <a class="nx-mega-product" href="#">
+                      <div class="nx-mega-product__img-wrap">
+                        <img class="nx-mega-product__img" src="https://www.evogennutrition.com/cdn/shop/files/Amino_KEM_white_lid_Amino_Kem_Sour_Candy.png?v=1768323587&width=160" alt="" width="160" height="160" loading="lazy" />
+                      </div>
+                      <div class="nx-mega-product__body">
+                        <span class="nx-mega-product__title">Amino K.E.M. (placeholder)</span>
+                        <span class="nx-mega-product__desc">Ejemplo de tercer producto; sustituye por ítem real de la colección proteína.</span>
+                      </div>
+                    </a>
+                    <a class="nx-mega-product" href="#">
+                      <div class="nx-mega-product__img-wrap">
+                        <img class="nx-mega-product__img" src="https://www.evogennutrition.com/cdn/shop/files/EVP_AQ_SQUARES_melon_front.png?v=1769788944&width=160" alt="" width="160" height="160" loading="lazy" />
+                      </div>
+                      <div class="nx-mega-product__body">
+                        <span class="nx-mega-product__title">EVP AQ (placeholder)</span>
+                        <span class="nx-mega-product__desc">Cuarto slot de placeholder. En Shopify, repite el mismo bloque que los demás productos de la colección.</span>
+                      </div>
+                    </a>
+                  </div>
+                  <a class="nx-mega__all" href="./todos-los-productos.html?collection=proteinas-1" data-mega-all>Ver toda la categoría</a>
+                </div>
+                <aside class="nx-mega__feature" aria-label="Destacado">
+                  <a class="nx-mega-feature" href="./todos-los-productos.html?collection=proteinas-1" data-mega-feature>
+                    <div class="nx-mega-feature__media">
+                      <img
+                        class="nx-mega-feature__img"
+                        src="/assets/mega-feature-proteinas.jpg"
+                        alt="Proteínas y creatina — whey, creatina micronizada y suplementación deportiva"
+                        width="1024"
+                        height="434"
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    </div>
+                    <div class="nx-mega-feature__text">
+                      <span class="nx-mega-feature__title">Proteínas para tu objetivo</span>
+                      <span class="nx-mega-feature__desc">Recuperación, masa magra y rendimiento con opciones para cada rutina.</span>
+                    </div>
+                  </a>
+                </aside>
+              </div>
+            </div>
+          </li>
+          <li class="nx-nav-item nx-nav-item--mega">
+            <a class="nx-navbar__link" href="./todos-los-productos.html?collection=pre-entrenos-1" aria-expanded="false" id="nx-mega-pre-trigger">PRE-ENTRENOS</a>
+            <div class="nx-mega" id="nx-mega-pre" role="region" aria-labelledby="nx-mega-pre-trigger" aria-hidden="true" data-collection-handle="pre-entrenos-1">
+              <div class="nx-mega__inner">
+                <div class="nx-mega__main">
+                  <p class="nx-mega__eyebrow">PRE-ENTRENOS</p>
+                  <div class="nx-mega__grid" data-mega-grid>
+                    <a class="nx-mega-product" href="#">
+                      <div class="nx-mega-product__img-wrap">
+                        <img class="nx-mega-product__img" src="https://www.evogennutrition.com/cdn/shop/files/EVPXtreme-TT-STR-S.png?v=1773679446&width=160" alt="" width="160" height="160" loading="lazy" />
+                      </div>
+                      <div class="nx-mega-product__body">
+                        <span class="nx-mega-product__title">EVP Xtreme N.O. (placeholder)</span>
+                        <span class="nx-mega-product__desc">Pre-entreno de alto estímulo; reemplaza por producto real de la colección.</span>
+                      </div>
+                    </a>
+                    <a class="nx-mega-product" href="#">
+                      <div class="nx-mega-product__img-wrap">
+                        <img class="nx-mega-product__img" src="https://www.evogennutrition.com/cdn/shop/files/EVP_3D_victory_render.png?v=1774538876&width=160" alt="" width="160" height="160" loading="lazy" />
+                      </div>
+                      <div class="nx-mega-product__body">
+                        <span class="nx-mega-product__title">EVP-3D (placeholder)</span>
+                        <span class="nx-mega-product__desc">Sin estimulantes; mismo patrón Liquid que el resto de categorías.</span>
+                      </div>
+                    </a>
+                    <a class="nx-mega-product" href="#">
+                      <div class="nx-mega-product__img-wrap">
+                        <img class="nx-mega-product__img" src="https://www.evogennutrition.com/cdn/shop/files/EVP_AQ_SQUARES_melon_front.png?v=1769788944&width=160" alt="" width="160" height="160" loading="lazy" />
+                      </div>
+                      <div class="nx-mega-product__body">
+                        <span class="nx-mega-product__title">EVP AQ (placeholder)</span>
+                        <span class="nx-mega-product__desc">Tercer slot de la colección pre-entreno en Shopify.</span>
+                      </div>
+                    </a>
+                    <a class="nx-mega-product" href="#">
+                      <div class="nx-mega-product__img-wrap">
+                        <img class="nx-mega-product__img" src="https://www.evogennutrition.com/cdn/shop/files/Amino_KEM_white_lid_Amino_Kem_Sour_Candy.png?v=1768323587&width=160" alt="" width="160" height="160" loading="lazy" />
+                      </div>
+                      <div class="nx-mega-product__body">
+                        <span class="nx-mega-product__title">Amino K.E.M. (placeholder)</span>
+                        <span class="nx-mega-product__desc">Cuarto producto; ajusta handle de colección en el theme.</span>
+                      </div>
+                    </a>
+                  </div>
+                  <a class="nx-mega__all" href="./todos-los-productos.html?collection=pre-entrenos-1" data-mega-all>Ver toda la categoría</a>
+                </div>
+                <aside class="nx-mega__feature" aria-label="Destacado pre-entreno">
+                  <a class="nx-mega-feature" href="./todos-los-productos.html?collection=pre-entrenos-1" data-mega-feature>
+                    <div class="nx-mega-feature__media">
+                      <img
+                        class="nx-mega-feature__img"
+                        src="/assets/mega-feature-pre-entrenos.jpg"
+                        alt="Pre-entrenos — energía y enfoque en el gym"
+                        width="1200"
+                        height="800"
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    </div>
+                    <div class="nx-mega-feature__text">
+                      <span class="nx-mega-feature__title">Potencia cada sesión</span>
+                      <span class="nx-mega-feature__desc">Promo de ejemplo. En Liquid: bloque o metafield vinculado al menú.</span>
+                    </div>
+                  </a>
+                </aside>
+              </div>
+            </div>
+          </li>
+          <li class="nx-nav-item nx-nav-item--mega">
+            <a class="nx-navbar__link" href="./todos-los-productos.html?collection=construir-musculo-1" aria-expanded="false" id="nx-mega-musculo-trigger">CONSTRUIR MÚSCULO</a>
+            <div class="nx-mega" id="nx-mega-musculo" role="region" aria-labelledby="nx-mega-musculo-trigger" aria-hidden="true" data-collection-handle="construir-musculo-1">
+              <div class="nx-mega__inner">
+                <div class="nx-mega__main">
+                  <p class="nx-mega__eyebrow">CONSTRUIR MÚSCULO</p>
+                  <div class="nx-mega__grid" data-mega-grid>
+                    <a class="nx-mega-product" href="#">
+                      <div class="nx-mega-product__img-wrap">
+                        <img class="nx-mega-product__img" src="/assets/mega-feature-proteinas.jpg" alt="" width="160" height="160" loading="lazy" decoding="async" />
+                      </div>
+                      <div class="nx-mega-product__body">
+                        <span class="nx-mega-product__title">Isoject (placeholder)</span>
+                        <span class="nx-mega-product__desc">Proteína para apoyo anabólico y recuperación en fase de volumen.</span>
+                      </div>
+                    </a>
+                    <a class="nx-mega-product" href="#">
+                      <div class="nx-mega-product__img-wrap">
+                        <img class="nx-mega-product__img" src="/assets/mega-feature-proteinas.jpg" alt="" width="160" height="160" loading="lazy" decoding="async" />
+                      </div>
+                      <div class="nx-mega-product__body">
+                        <span class="nx-mega-product__title">Amino K.E.M. (placeholder)</span>
+                        <span class="nx-mega-product__desc">EAAs para entrenamientos largos y mínima degradación muscular.</span>
+                      </div>
+                    </a>
+                    <a class="nx-mega-product" href="#">
+                      <div class="nx-mega-product__img-wrap">
+                        <img class="nx-mega-product__img" src="/assets/mega-feature-proteinas.jpg" alt="" width="160" height="160" loading="lazy" decoding="async" />
+                      </div>
+                      <div class="nx-mega-product__body">
+                        <span class="nx-mega-product__title">EVP Xtreme (placeholder)</span>
+                        <span class="nx-mega-product__desc">Rendimiento e intensidad en rutinas de hipertrofia.</span>
+                      </div>
+                    </a>
+                    <a class="nx-mega-product" href="#">
+                      <div class="nx-mega-product__img-wrap">
+                        <img class="nx-mega-product__img" src="/assets/mega-feature-proteinas.jpg" alt="" width="160" height="160" loading="lazy" decoding="async" />
+                      </div>
+                      <div class="nx-mega-product__body">
+                        <span class="nx-mega-product__title">EVP AQ (placeholder)</span>
+                        <span class="nx-mega-product__desc">Hidratación y volumen celular para entrenos pesados.</span>
+                      </div>
+                    </a>
+                  </div>
+                  <a class="nx-mega__all" href="./todos-los-productos.html?collection=construir-musculo-1" data-mega-all>Ver toda la categoría</a>
+                </div>
+                <aside class="nx-mega__feature" aria-label="Destacado músculo">
+                  <a class="nx-mega-feature" href="./todos-los-productos.html?collection=construir-musculo-1" data-mega-feature>
+                    <div class="nx-mega-feature__media">
+                      <img
+                        class="nx-mega-feature__img"
+                        src="/assets/mega-feature-musculo.jpg"
+                        alt="Construir músculo — fuerza e hipertrofia"
+                        width="1200"
+                        height="800"
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    </div>
+                    <div class="nx-mega-feature__text">
+                      <span class="nx-mega-feature__title">Stack ganancia limpia</span>
+                      <span class="nx-mega-feature__desc">Placeholder promocional; conecta a colección o landing en Shopify.</span>
+                    </div>
+                  </a>
+                </aside>
+              </div>
+            </div>
+          </li>
+          <li class="nx-nav-item nx-nav-item--mega">
+            <a class="nx-navbar__link" href="./todos-los-productos.html?collection=salud-y-bienestar-1" aria-expanded="false" id="nx-mega-salud-trigger">SALUD Y BIENESTAR</a>
+            <div class="nx-mega" id="nx-mega-salud" role="region" aria-labelledby="nx-mega-salud-trigger" aria-hidden="true" data-collection-handle="salud-y-bienestar-1">
+              <div class="nx-mega__inner">
+                <div class="nx-mega__main">
+                  <p class="nx-mega__eyebrow">SALUD Y BIENESTAR</p>
+                  <div class="nx-mega__grid" data-mega-grid>
+                    <a class="nx-mega-product" href="#">
+                      <div class="nx-mega-product__img-wrap">
+                        <img class="nx-mega-product__img" src="https://www.evogennutrition.com/cdn/shop/files/Amino_KEM_white_lid_Amino_Kem_Sour_Candy.png?v=1768323587&width=160" alt="" width="160" height="160" loading="lazy" />
+                      </div>
+                      <div class="nx-mega-product__body">
+                        <span class="nx-mega-product__title">Amino K.E.M. (placeholder)</span>
+                        <span class="nx-mega-product__desc">Apoyo diario de aminoácidos y recuperación general.</span>
+                      </div>
+                    </a>
+                    <a class="nx-mega-product" href="#">
+                      <div class="nx-mega-product__img-wrap">
+                        <img class="nx-mega-product__img" src="https://www.evogennutrition.com/cdn/shop/files/IsoJect_rendersNOBAND2026redvelvetfront.png?v=1772732563&width=160" alt="" width="160" height="160" loading="lazy" />
+                      </div>
+                      <div class="nx-mega-product__body">
+                        <span class="nx-mega-product__title">Isoject (placeholder)</span>
+                        <span class="nx-mega-product__desc">Proteína versátil para nutrición equilibrada y saciedad.</span>
+                      </div>
+                    </a>
+                    <a class="nx-mega-product" href="#">
+                      <div class="nx-mega-product__img-wrap">
+                        <img class="nx-mega-product__img" src="https://www.evogennutrition.com/cdn/shop/files/EVP_AQ_SQUARES_melon_front.png?v=1769788944&width=160" alt="" width="160" height="160" loading="lazy" />
+                      </div>
+                      <div class="nx-mega-product__body">
+                        <span class="nx-mega-product__title">EVP AQ (placeholder)</span>
+                        <span class="nx-mega-product__desc">Hidratación y rendimiento en el día a día.</span>
+                      </div>
+                    </a>
+                    <a class="nx-mega-product" href="#">
+                      <div class="nx-mega-product__img-wrap">
+                        <img class="nx-mega-product__img" src="https://www.evogennutrition.com/cdn/shop/files/EVP_3D_victory_render.png?v=1774538876&width=160" alt="" width="160" height="160" loading="lazy" />
+                      </div>
+                      <div class="nx-mega-product__body">
+                        <span class="nx-mega-product__title">EVP-3D (placeholder)</span>
+                        <span class="nx-mega-product__desc">Pre suave para bienestar y foco sin exceso de estimulantes.</span>
+                      </div>
+                    </a>
+                  </div>
+                  <a class="nx-mega__all" href="./todos-los-productos.html?collection=salud-y-bienestar-1" data-mega-all>Ver toda la categoría</a>
+                </div>
+                <aside class="nx-mega__feature" aria-label="Destacado bienestar">
+                  <a class="nx-mega-feature" href="./todos-los-productos.html?collection=salud-y-bienestar-1" data-mega-feature>
+                    <div class="nx-mega-feature__media">
+                      <img
+                        class="nx-mega-feature__img"
+                        src="/assets/mega-feature-bienestar.jpg"
+                        alt="Salud y bienestar — recuperación, sueño y hábitos saludables"
+                        width="1024"
+                        height="434"
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    </div>
+                    <div class="nx-mega-feature__text">
+                      <span class="nx-mega-feature__title">Bienestar con respaldo científico</span>
+                      <span class="nx-mega-feature__desc">Imagen y copy desde CMS o metafields del menú mega.</span>
+                    </div>
+                  </a>
+                </aside>
+              </div>
+            </div>
+          </li>
+          <li class="nx-nav-item nx-nav-item--mega">
+            <a class="nx-navbar__link" href="./todos-los-productos.html?collection=manejo-de-peso-1" aria-expanded="false" id="nx-mega-dieta-trigger">MANEJO DE PESO</a>
+            <div class="nx-mega" id="nx-mega-dieta" role="region" aria-labelledby="nx-mega-dieta-trigger" aria-hidden="true" data-collection-handle="manejo-de-peso-1">
+              <div class="nx-mega__inner">
+                <div class="nx-mega__main">
+                  <p class="nx-mega__eyebrow">MANEJO DE PESO</p>
+                  <div class="nx-mega__grid" data-mega-grid>
+                    <a class="nx-mega-product" href="#">
+                      <div class="nx-mega-product__img-wrap">
+                        <img class="nx-mega-product__img" src="https://www.evogennutrition.com/cdn/shop/files/IsoJect_rendersNOBAND2026redvelvetfront.png?v=1772732563&width=160" alt="" width="160" height="160" loading="lazy" />
+                      </div>
+                      <div class="nx-mega-product__body">
+                        <span class="nx-mega-product__title">Isoject bajo en calorías (placeholder)</span>
+                        <span class="nx-mega-product__desc">Apoyo proteico en déficit calórico o definición.</span>
+                      </div>
+                    </a>
+                    <a class="nx-mega-product" href="#">
+                      <div class="nx-mega-product__img-wrap">
+                        <img class="nx-mega-product__img" src="https://www.evogennutrition.com/cdn/shop/files/Amino_KEM_white_lid_Amino_Kem_Sour_Candy.png?v=1768323587&width=160" alt="" width="160" height="160" loading="lazy" />
+                      </div>
+                      <div class="nx-mega-product__body">
+                        <span class="nx-mega-product__title">Amino K.E.M. (placeholder)</span>
+                        <span class="nx-mega-product__desc">Menos picos de hambre entre comidas durante la dieta.</span>
+                      </div>
+                    </a>
+                    <a class="nx-mega-product" href="#">
+                      <div class="nx-mega-product__img-wrap">
+                        <img class="nx-mega-product__img" src="https://www.evogennutrition.com/cdn/shop/files/EVP_AQ_SQUARES_melon_front.png?v=1769788944&width=160" alt="" width="160" height="160" loading="lazy" />
+                      </div>
+                      <div class="nx-mega-product__body">
+                        <span class="nx-mega-product__title">EVP AQ (placeholder)</span>
+                        <span class="nx-mega-product__desc">Volumen y entrenos en etapas de restricción hídrica controlada.</span>
+                      </div>
+                    </a>
+                    <a class="nx-mega-product" href="#">
+                      <div class="nx-mega-product__img-wrap">
+                        <img class="nx-mega-product__img" src="https://www.evogennutrition.com/cdn/shop/files/EVP_3D_victory_render.png?v=1774538876&width=160" alt="" width="160" height="160" loading="lazy" />
+                      </div>
+                      <div class="nx-mega-product__body">
+                        <span class="nx-mega-product__title">EVP-3D (placeholder)</span>
+                        <span class="nx-mega-product__desc">Energía moderada sin exceso de calorías líquidas.</span>
+                      </div>
+                    </a>
+                  </div>
+                  <a class="nx-mega__all" href="./todos-los-productos.html?collection=manejo-de-peso-1" data-mega-all>Ver toda la categoría</a>
+                </div>
+                <aside class="nx-mega__feature" aria-label="Destacado dieta">
+                  <a class="nx-mega-feature" href="./todos-los-productos.html?collection=manejo-de-peso-1" data-mega-feature>
+                    <div class="nx-mega-feature__media">
+                      <img
+                        class="nx-mega-feature__img"
+                        src="/assets/mega-feature-peso.jpg"
+                        alt="Manejo de peso — nutrición diaria y hábitos en casa"
+                        width="1024"
+                        height="434"
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    </div>
+                    <div class="nx-mega-feature__text">
+                      <span class="nx-mega-feature__title">Metas de composición corporal</span>
+                      <span class="nx-mega-feature__desc">Placeholder; enlaza a guía o colección “diet” en Shopify.</span>
+                    </div>
+                  </a>
+                </aside>
+              </div>
+            </div>
+          </li>
+          <li class="nx-nav-item nx-nav-item--mega">
+            <a class="nx-navbar__link" href="./todos-los-productos.html?collection=ropa-y-accesorios" aria-expanded="false" id="nx-mega-ropa-trigger">ROPA Y ACCESORIOS</a>
+            <div class="nx-mega" id="nx-mega-ropa" role="region" aria-labelledby="nx-mega-ropa-trigger" aria-hidden="true" data-collection-handle="ropa-y-accesorios">
+              <div class="nx-mega__inner">
+                <div class="nx-mega__main">
+                  <p class="nx-mega__eyebrow">ROPA Y ACCESORIOS</p>
+                  <div class="nx-mega__grid" data-mega-grid>
+                    <a class="nx-mega-product" href="#">
+                      <div class="nx-mega-product__img-wrap">
+                        <img class="nx-mega-product__img" src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=160&amp;h=160&amp;fit=crop" alt="" width="160" height="160" loading="lazy" />
+                      </div>
+                      <div class="nx-mega-product__body">
+                        <span class="nx-mega-product__title">Ropa deportiva</span>
+                        <span class="nx-mega-product__desc">Cargando destacados desde Shopify…</span>
+                      </div>
+                    </a>
+                    <a class="nx-mega-product" href="#">
+                      <div class="nx-mega-product__img-wrap">
+                        <img class="nx-mega-product__img" src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=160&amp;h=160&amp;fit=crop" alt="" width="160" height="160" loading="lazy" />
+                      </div>
+                      <div class="nx-mega-product__body">
+                        <span class="nx-mega-product__title">Zapatillas</span>
+                        <span class="nx-mega-product__desc">Categoría Shopify: Ropa y Accesorios.</span>
+                      </div>
+                    </a>
+                    <a class="nx-mega-product" href="#">
+                      <div class="nx-mega-product__img-wrap">
+                        <img class="nx-mega-product__img" src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?w=160&amp;h=160&amp;fit=crop" alt="" width="160" height="160" loading="lazy" />
+                      </div>
+                      <div class="nx-mega-product__body">
+                        <span class="nx-mega-product__title">Accesorios</span>
+                        <span class="nx-mega-product__desc">Mismo canal Headless que el resto.</span>
+                      </div>
+                    </a>
+                    <a class="nx-mega-product" href="#">
+                      <div class="nx-mega-product__img-wrap">
+                        <img class="nx-mega-product__img" src="https://images.unsplash.com/photo-1556906781-9a412961c28c?w=160&amp;h=160&amp;fit=crop" alt="" width="160" height="160" loading="lazy" />
+                      </div>
+                      <div class="nx-mega-product__body">
+                        <span class="nx-mega-product__title">Ver catálogo</span>
+                        <span class="nx-mega-product__desc">Enlace a la colección completa.</span>
+                      </div>
+                    </a>
+                  </div>
+                  <a class="nx-mega__all" href="./todos-los-productos.html?collection=ropa-y-accesorios" data-mega-all>Ver toda la categoría</a>
+                </div>
+                <aside class="nx-mega__feature" aria-label="Destacado ropa">
+                  <a class="nx-mega-feature" href="./todos-los-productos.html?collection=ropa-y-accesorios" data-mega-feature>
+                    <div class="nx-mega-feature__media">
+                      <img
+                        class="nx-mega-feature__img"
+                        src="/assets/mega-feature-ropa.jpg"
+                        alt="Ropa y accesorios — rendimiento y estilo en el gym"
+                        width="1024"
+                        height="434"
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    </div>
+                    <div class="nx-mega-feature__text">
+                      <span class="nx-mega-feature__title">Ropa y accesorios</span>
+                      <span class="nx-mega-feature__desc">Imagen de ejemplo; productos reales desde la colección ropa-y-accesorios.</span>
+                    </div>
+                  </a>
+                </aside>
+              </div>
+            </div>
+          </li>
         </ul>
 
         <div class="nx-navbar__right">
@@ -241,7 +652,8 @@
         left: 0;
         right: 0;
         height: 68px;
-        z-index: 999;
+        z-index: 1001;
+        overflow: visible;
         background: rgba(255, 255, 255, 0.92);
         backdrop-filter: blur(18px) saturate(160%);
         -webkit-backdrop-filter: blur(18px) saturate(160%);
@@ -256,6 +668,7 @@
         align-items: center;
         justify-content: space-between;
         gap: 18px;
+        overflow: visible;
       }
       .nx-navbar__logo {
         text-decoration: none;
@@ -266,8 +679,7 @@
       .nx-navbar__logo-img {
         height: clamp(40px, 3.5vw + 30px, 54px);
         width: auto;
-        max-width: min(400px, 88vw);
-        display: block;
+        max-width: min(260px, 50vw);
         object-fit: contain;
       }
 
@@ -352,6 +764,7 @@
         position: fixed;
         top: 108px;
         z-index: 998;
+        pointer-events: none;
         background: linear-gradient(
           90deg,
           transparent 0%,
@@ -1093,6 +1506,7 @@
     <script src="./nexorien-shopify.js"></script>
     <script src="./nexorien-cart.js"></script>
     <script src="./nexorien-navbar-actions.js"></script>
+    <script src="./nexorien-mega-desktop.js"></script>
     <script>
       function nxBuildProductCard(pr) {
         const art = document.createElement("article");
@@ -1618,10 +2032,14 @@
         });
         bar.addEventListener("mouseenter", stop);
         bar.addEventListener("mouseleave", start);
+        el.textContent = messages[0];
         start();
       })();
 
-      // 2) Scroll behavior (navbar + promo bar)
+      // 1c) Mega menús — productos desde Shopify (colecciones)
+      NxShopify.initMegaCollections();
+
+      // 2) Scroll behavior (navbar + barra promo: ocultar al bajar, como index)
       window.addEventListener("scroll", function () {
         const navbar = document.getElementById("nexorien-navbar");
         const divider = document.querySelector(".navbar-divider");
@@ -1630,16 +2048,25 @@
 
         const atTop = window.scrollY === 0;
 
-        // Solo controlamos offsets; estilos "scrolled" se manejan en home/producto.
+        if (window.scrollY > 80) {
+          navbar.classList.add("scrolled");
+          if (divider) divider.style.opacity = "0";
+        } else {
+          navbar.classList.remove("scrolled");
+          if (divider) divider.style.opacity = "1";
+        }
+
         if (bar) {
           if (atTop) {
             bar.classList.remove("is-hidden");
             navbar.style.top = "";
             if (divider) divider.style.top = "";
+            document.documentElement.style.setProperty("--nx-mega-top", "");
           } else {
             bar.classList.add("is-hidden");
             navbar.style.top = "0";
-            if (divider) divider.style.top = "56px";
+            if (divider) divider.style.top = "68px";
+            document.documentElement.style.setProperty("--nx-mega-top", "68px");
           }
         }
       });

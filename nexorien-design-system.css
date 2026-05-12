@@ -561,7 +561,7 @@ small {
   top: 0;
   left: 0;
   right: 0;
-  z-index: 1000;
+  z-index: 1002;
   height: 40px;
   background: #E32D10;
   color: #ffffff;
@@ -680,7 +680,8 @@ small {
   left: 0;
   right: 0;
   height: 68px;
-  z-index: 999;
+  z-index: 1001;
+  overflow: visible;
   background: transparent;
   border-bottom: 1px solid rgba(0, 0, 0, 0.06);
   transition: background 0.4s ease, backdrop-filter 0.4s ease, border-bottom 0.4s ease;
@@ -702,6 +703,7 @@ small {
   align-items: center;
   justify-content: space-between;
   height: 100%;
+  overflow: visible;
 }
 
 /* Logo */
@@ -760,6 +762,7 @@ small {
   gap: clamp(10px, 1.1vw, 20px);
   justify-content: center;
   min-width: 0;
+  overflow: visible;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -803,13 +806,36 @@ small {
   width: 100%;
 }
 
+@media (min-width: 769px) {
+  /*
+    Puente hover bajo cada ítem mega: el panel es position:fixed y el cursor cruza
+    zona fuera del <li> (p. ej. línea divisoria). Sin esto :hover y mouseleave cierran el menú.
+  */
+  .nx-nav-item--mega::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 100%;
+    height: 56px;
+    pointer-events: none;
+    z-index: 1001;
+  }
+
+  .nx-nav-item--mega:hover::after,
+  .nx-nav-item--mega:focus-within::after,
+  .nx-nav-item--mega.is-mega-open::after {
+    pointer-events: auto;
+  }
+}
+
 /* Mega menú (desktop) */
 .nx-mega {
   position: fixed;
   left: 0;
   right: 0;
   top: var(--nx-mega-top);
-  z-index: 997;
+  z-index: 1003;
   background: #ffffff;
   border-top: 1px solid rgba(0, 0, 0, 0.06);
   box-shadow: 0 18px 40px rgba(0, 0, 0, 0.12);
@@ -824,7 +850,8 @@ small {
 }
 
 .nx-nav-item--mega:hover .nx-mega,
-.nx-nav-item--mega:focus-within .nx-mega {
+.nx-nav-item--mega:focus-within .nx-mega,
+.nx-nav-item--mega.is-mega-open .nx-mega {
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
@@ -859,6 +886,74 @@ small {
   padding-bottom: 20px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.08);
   margin-bottom: 16px;
+  min-height: 212px;
+}
+
+@keyframes nx-mega-skel-shimmer {
+  0% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: -100% 0;
+  }
+}
+
+.nx-mega__grid.is-mega-loading {
+  pointer-events: none;
+}
+
+.nx-mega-skel {
+  display: grid;
+  grid-template-columns: 76px minmax(0, 1fr);
+  gap: 14px;
+  align-items: start;
+}
+
+.nx-mega-skel__thumb {
+  width: 76px;
+  height: 76px;
+  border-radius: 8px;
+  background: linear-gradient(90deg, #ececec 0%, #f5f5f5 45%, #ececec 90%);
+  background-size: 220% 100%;
+  animation: nx-mega-skel-shimmer 1.15s ease-in-out infinite;
+}
+
+.nx-mega-skel__lines {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+  padding-top: 4px;
+}
+
+.nx-mega-skel__line {
+  display: block;
+  height: 10px;
+  border-radius: 4px;
+  background: linear-gradient(90deg, #ececec 0%, #f5f5f5 45%, #ececec 90%);
+  background-size: 220% 100%;
+  animation: nx-mega-skel-shimmer 1.15s ease-in-out infinite;
+}
+
+.nx-mega-skel__line--title {
+  width: 72%;
+  height: 12px;
+}
+
+.nx-mega-skel__line--desc {
+  width: 100%;
+}
+
+.nx-mega-skel__line--short {
+  width: 56%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nx-mega-skel__thumb,
+  .nx-mega-skel__line {
+    animation: none;
+    background: #ececec;
+  }
 }
 
 .nx-mega-product {
@@ -1094,6 +1189,23 @@ small {
   display: flex;
   align-items: center;
   gap: 20px;
+}
+
+@media (min-width: 769px) {
+  /*
+    Nav centrada + logo ancho: los últimos links pueden quedar bajo el cuadro de iconos
+    (mismo plano, .nx-navbar__right después en el DOM). pointer-events evita que el hueco
+    opaque robe hover/clicks del mega menú; solo los controles siguen siendo clicables.
+  */
+  #nexorien-navbar .nx-navbar__right {
+    pointer-events: none;
+  }
+
+  #nexorien-navbar .nx-navbar__right .nx-hamburger,
+  #nexorien-navbar .nx-navbar__right .nx-icons button,
+  #nexorien-navbar .nx-navbar__right .nx-cart-wrap button.nx-icon {
+    pointer-events: auto;
+  }
 }
 
 .nx-icons {
@@ -1572,6 +1684,7 @@ small {
   position: fixed;
   top: 108px;
   z-index: 998;
+  pointer-events: none;
   transition: opacity 0.3s ease;
   opacity: 1;
 }

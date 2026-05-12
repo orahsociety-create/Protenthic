@@ -893,7 +893,7 @@
             &#8249;
           </button>
           <div id="ann-message" class="nx-announcement__message" aria-live="polite" aria-atomic="true">
-            NOVEDAD · Carnigen Blue Razz &amp; Dragonfruit
+            los mejores suplemenos de las mejores marcas
           </div>
           <button id="ann-next" class="nx-announcement__nav nx-announcement__nav--next" type="button" aria-label="Siguiente promoción">
             &#8250;
@@ -1544,6 +1544,7 @@
   <script src="./nexorien-shopify.js"></script>
   <script src="./nexorien-cart.js"></script>
   <script src="./nexorien-navbar-actions.js"></script>
+  <script src="./nexorien-mega-desktop.js"></script>
   <script>
 
       // 1) Promotion bar carousel
@@ -1594,108 +1595,12 @@
         });
         bar.addEventListener("mouseenter", stop);
         bar.addEventListener("mouseleave", start);
+        el.textContent = messages[0];
         start();
       })();
 
-      // 1b) Mega menús — aria
-      (() => {
-        document.querySelectorAll(".nx-nav-item--mega").forEach((item) => {
-          const trigger = item.querySelector(".nx-navbar__link");
-          const panel = item.querySelector(".nx-mega");
-          if (!trigger || !panel) return;
-
-          const show = () => {
-            trigger.setAttribute("aria-expanded", "true");
-            panel.setAttribute("aria-hidden", "false");
-          };
-          const hide = () => {
-            trigger.setAttribute("aria-expanded", "false");
-            panel.setAttribute("aria-hidden", "true");
-          };
-
-          item.addEventListener("mouseenter", show);
-          item.addEventListener("mouseleave", hide);
-          item.addEventListener("focusin", show);
-          item.addEventListener("focusout", (e) => {
-            if (!item.contains(e.relatedTarget)) hide();
-          });
-        });
-      })();
-
       // 1c) Mega menús — productos Shopify
-      (async function nxInitMegaCollections() {
-        const panels = Array.from(document.querySelectorAll(".nx-mega[data-collection-handle]"));
-        if (!panels.length || !window.NxShopify) return;
-        try {
-          await NxShopify.ready();
-        } catch (_) {
-          return;
-        }
-
-        const buildItem = (p) => {
-          const a = document.createElement("a");
-          a.className = "nx-mega-product";
-          a.href = "./producto.html?handle=" + encodeURIComponent(p.handle);
-
-          const wrap = document.createElement("div");
-          wrap.className = "nx-mega-product__img-wrap";
-          const img = document.createElement("img");
-          img.className = "nx-mega-product__img";
-          img.src = p.imageUrl || "";
-          img.alt = p.imageAlt || "";
-          img.width = 160;
-          img.height = 160;
-          img.loading = "lazy";
-          wrap.appendChild(img);
-
-          const body = document.createElement("div");
-          body.className = "nx-mega-product__body";
-          const t = document.createElement("span");
-          t.className = "nx-mega-product__title";
-          t.textContent = p.title || "";
-          const d = document.createElement("span");
-          d.className = "nx-mega-product__desc";
-          if (p.saveFormatted) d.textContent = `AHORRA ${p.saveFormatted}`;
-          else d.textContent = p.priceFormatted ? `Desde ${p.priceFormatted}` : "Ver producto";
-          body.appendChild(t);
-          body.appendChild(d);
-
-          a.appendChild(wrap);
-          a.appendChild(body);
-          return a;
-        };
-
-        for (const panel of panels) {
-          const handle = panel.getAttribute("data-collection-handle") || "";
-          const grid = panel.querySelector("[data-mega-grid]");
-          if (!grid) continue;
-          try {
-            const col = await NxShopify.fetchCollectionByHandle(handle, 4);
-            if (!col) continue;
-            grid.innerHTML = "";
-            for (const p of col.products || []) grid.appendChild(buildItem(p));
-
-            const eyebrow = panel.querySelector(".nx-mega__eyebrow");
-            if (eyebrow && col.title) eyebrow.textContent = String(col.title).toUpperCase();
-
-            const all = panel.querySelector("[data-mega-all]");
-            if (all) all.href = `./todos-los-productos.html?collection=${encodeURIComponent(handle)}`;
-
-            const feature = panel.querySelector("[data-mega-feature]");
-            if (feature) feature.href = `./todos-los-productos.html?collection=${encodeURIComponent(handle)}`;
-
-            const featureImg = panel.querySelector(".nx-mega-feature__img");
-            if (featureImg && col.imageUrl) featureImg.src = col.imageUrl;
-            if (featureImg && col.imageAlt) featureImg.alt = col.imageAlt;
-
-            const featureTitle = panel.querySelector(".nx-mega-feature__title");
-            if (featureTitle && col.title) featureTitle.textContent = col.title;
-
-            const featureDesc = panel.querySelector(".nx-mega-feature__desc");
-            if (featureDesc) featureDesc.textContent = "Ver toda la categoría";
-          } catch (_) {}
-        }
-      })();
+      NxShopify.initMegaCollections();
 
       window.addEventListener("scroll", function () {
         const navbar = document.getElementById("nexorien-navbar");

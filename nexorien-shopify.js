@@ -630,6 +630,17 @@
       await associateCustomerToCart();
     }
 
+    // Si hay descuento pendiente, aplicarlo
+    const pending = getPendingDiscount();
+    if (pending) {
+      const applied = await applyDiscountCode(pending);
+      if (applied) {
+        try {
+          global.localStorage.removeItem(DISCOUNT_KEY);
+        } catch (_) {}
+      }
+    }
+
     return { checkoutUrl: cart?.checkoutUrl || "", cartId: cart?.id || cartId };
   }
 
@@ -679,6 +690,51 @@
       return data.cartBuyerIdentityUpdate?.cart || null;
     } catch (e) {
       console.warn("[NxShopify] No se pudo asociar cliente al carrito:", e.message);
+      return null;
+    }
+  }
+
+  // =============================================
+  // CART — Aplicar código de descuento
+  // =============================================
+
+  const DISCOUNT_KEY = "nexorien_pending_discount";
+
+  const CART_DISCOUNT_UPDATE = `
+    mutation cartDiscountCodesUpdate($cartId: ID!, $discountCodes: [String!]!) {
+      cartDiscountCodesUpdate(cartId: $cartId, discountCodes: $discountCodes) {
+        cart { id checkoutUrl }
+        userErrors { field message }
+      }
+    }
+  `;
+
+  async function applyDiscountCode(code) {
+    const cartId = await ensureCart();
+    try {
+      const data = await graphql(CART_DISCOUNT_UPDATE, {
+        cartId,
+        discountCodes: [code],
+      });
+      const errs = data.cartDiscountCodesUpdate?.userErrors || [];
+      if (errs.length) console.warn("[NxShopify] discount error:", errs[0].message);
+      return data.cartDiscountCodesUpdate?.cart || null;
+    } catch (e) {
+      console.warn("[NxShopify] No se pudo aplicar descuento:", e.message);
+      return null;
+    }
+  }
+
+  function savePendingDiscount(code) {
+    try {
+      global.localStorage.setItem(DISCOUNT_KEY, code);
+    } catch (_) {}
+  }
+
+  function getPendingDiscount() {
+    try {
+      return global.localStorage.getItem(DISCOUNT_KEY) || null;
+    } catch {
       return null;
     }
   }
@@ -1008,6 +1064,170 @@
     return data.customerDefaultAddressUpdate.customer;
   }
 
+  /** Fila skeleton del mega menú (evita flash de placeholders HTML antes del fetch). */
+  function buildMegaSkeletonRow() {
+    const row = document.createElement("div");
+    row.className = "nx-mega-skel";
+    row.setAttribute("aria-hidden", "true");
+    const thumb = document.createElement("div");
+    thumb.className = "nx-mega-skel__thumb";
+    const lines = document.createElement("div");
+    lines.className = "nx-mega-skel__lines";
+    const l1 = document.createElement("span");
+    l1.className = "nx-mega-skel__line nx-mega-skel__line--title";
+    const l2 = document.createElement("span");
+    l2.className = "nx-mega-skel__line nx-mega-skel__line--desc";
+    const l3 = document.createElement("span");
+    l3.className = "nx-mega-skel__line nx-mega-skel__line--short";
+    lines.appendChild(l1);
+    lines.appendChild(l2);
+    lines.appendChild(l3);
+    row.appendChild(thumb);
+    row.appendChild(lines);
+    return row;
+  }
+
+  function prepMegaMenuSkeletons() {
+    if (typeof document === "undefined") return;
+    document.querySelectorAll(".nx-mega[data-collection-handle]").forEach((panel) => {
+      const grid = panel.querySelector("[data-mega-grid]");
+      if (!grid || grid.dataset.nxMegaSkeleton === "1") return;
+      grid.dataset.nxMegaSkeleton = "1";
+      grid.classList.add("is-mega-loading");
+      grid.innerHTML = "";
+      for (let i = 0; i < 4; i++) grid.appendChild(buildMegaSkeletonRow());
+
+      const featureDesc = panel.querySelector(".nx-mega-feature__desc");
+      if (featureDesc && featureDesc.dataset.nxMegaFeatHold == null) {
+        featureDesc.dataset.nxMegaFeatHold = featureDesc.textContent;
+        featureDesc.textContent = "Cargando destacados…";
+      }
+    });
+  }
+
+  function restoreMegaPanelFallback(panel) {
+    const grid = panel.querySelector("[data-mega-grid]");
+    if (grid) {
+      delete grid.dataset.nxMegaSkeleton;
+      grid.classList.remove("is-mega-loading");
+      grid.innerHTML = "";
+    }
+    const featureDesc = panel.querySelector(".nx-mega-feature__desc");
+    if (featureDesc && featureDesc.dataset.nxMegaFeatHold != null) {
+      featureDesc.textContent = featureDesc.dataset.nxMegaFeatHold;
+      delete featureDesc.dataset.nxMegaFeatHold;
+    }
+  }
+
+  /**
+   * Rellena grids del mega menú desde colecciones Shopify.
+   * @param {{ productPageHrefBase?: string, catalogCollectionHrefBase?: string }} [options]
+   */
+  async function initMegaCollections(options) {
+    const opts = options || {};
+    const productPageHrefBase = opts.productPageHrefBase || "./producto.html?handle=";
+    const catalogCollectionHrefBase =
+      opts.catalogCollectionHrefBase || "./todos-los-productos.html?collection=";
+
+    prepMegaMenuSkeletons();
+
+    const panels = Array.from(document.querySelectorAll(".nx-mega[data-collection-handle]"));
+    if (!panels.length) return;
+
+    const buildItem = (p) => {
+      const a = document.createElement("a");
+      a.className = "nx-mega-product";
+      a.href = productPageHrefBase + encodeURIComponent(p.handle || "");
+
+      const wrap = document.createElement("div");
+      wrap.className = "nx-mega-product__img-wrap";
+      const img = document.createElement("img");
+      img.className = "nx-mega-product__img";
+      img.src = p.imageUrl || "";
+      img.alt = p.imageAlt || "";
+      img.width = 160;
+      img.height = 160;
+      img.loading = "lazy";
+      wrap.appendChild(img);
+
+      const body = document.createElement("div");
+      body.className = "nx-mega-product__body";
+      const t = document.createElement("span");
+      t.className = "nx-mega-product__title";
+      t.textContent = p.title || "";
+      const d = document.createElement("span");
+      d.className = "nx-mega-product__desc";
+      if (p.saveFormatted) d.textContent = "AHORRA " + p.saveFormatted;
+      else d.textContent = p.priceFormatted ? "Desde " + p.priceFormatted : "Ver producto";
+      body.appendChild(t);
+      body.appendChild(d);
+
+      a.appendChild(wrap);
+      a.appendChild(body);
+      return a;
+    };
+
+    if (!global.NxShopify) {
+      panels.forEach(restoreMegaPanelFallback);
+      return;
+    }
+
+    try {
+      await ready();
+    } catch (_) {
+      panels.forEach(restoreMegaPanelFallback);
+      return;
+    }
+
+    for (const panel of panels) {
+      const handle = panel.getAttribute("data-collection-handle") || "";
+      const grid = panel.querySelector("[data-mega-grid]");
+      if (!grid) continue;
+
+      try {
+        const col = await fetchCollectionByHandle(handle, 4);
+        delete grid.dataset.nxMegaSkeleton;
+        grid.classList.remove("is-mega-loading");
+        grid.innerHTML = "";
+
+        const featureDescEl = panel.querySelector(".nx-mega-feature__desc");
+
+        if (!col) {
+          if (featureDescEl && featureDescEl.dataset.nxMegaFeatHold != null) {
+            featureDescEl.textContent = featureDescEl.dataset.nxMegaFeatHold;
+            delete featureDescEl.dataset.nxMegaFeatHold;
+          }
+          continue;
+        }
+
+        for (const p of col.products || []) grid.appendChild(buildItem(p));
+
+        const eyebrow = panel.querySelector(".nx-mega__eyebrow");
+        if (eyebrow && col.title) eyebrow.textContent = String(col.title).toUpperCase();
+
+        const all = panel.querySelector("[data-mega-all]");
+        if (all) all.href = catalogCollectionHrefBase + encodeURIComponent(handle);
+
+        const feature = panel.querySelector("[data-mega-feature]");
+        if (feature) feature.href = catalogCollectionHrefBase + encodeURIComponent(handle);
+
+        const featureImg = panel.querySelector(".nx-mega-feature__img");
+        if (featureImg && col.imageUrl) featureImg.src = col.imageUrl;
+        if (featureImg && col.imageAlt) featureImg.alt = col.imageAlt;
+
+        const featureTitle = panel.querySelector(".nx-mega-feature__title");
+        if (featureTitle && col.title) featureTitle.textContent = col.title;
+
+        if (featureDescEl) {
+          featureDescEl.textContent = "Ver toda la categoría";
+          delete featureDescEl.dataset.nxMegaFeatHold;
+        }
+      } catch (_) {
+        restoreMegaPanelFallback(panel);
+      }
+    }
+  }
+
   global.NxShopify = {
     ready,
     getConfigSync,
@@ -1035,10 +1255,30 @@
     customerUpdate,
     getCustomerToken,
     associateCustomerToCart,
+    applyDiscountCode,
+    savePendingDiscount,
+    getPendingDiscount,
     customerAddressCreate,
     customerAddressUpdate,
     customerAddressDelete,
     customerDefaultAddressUpdate,
     newsletterSubscribe,
+    initMegaCollections,
+    prepMegaMenuSkeletons,
   };
 })(typeof window !== "undefined" ? window : globalThis);
+
+(function scheduleMegaMenuSkeletonPrep() {
+  const g = typeof window !== "undefined" ? window : globalThis;
+  const doc = g.document;
+  if (!doc || !g.NxShopify || typeof g.NxShopify.prepMegaMenuSkeletons !== "function") return;
+
+  const run = () => {
+    try {
+      g.NxShopify.prepMegaMenuSkeletons();
+    } catch (_) {}
+  };
+
+  if (doc.readyState === "loading") doc.addEventListener("DOMContentLoaded", run);
+  else run();
+})();

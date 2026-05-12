@@ -95,13 +95,13 @@
       '<div id="nx-nl-popup__hero-copy">' +
       '<div id="nx-nl-popup__eyebrow-row">' +
       '<span id="nx-nl-popup__eyebrow-bar" aria-hidden="true"></span>' +
-      '<span id="nx-nl-popup__eyebrow">OFERTA EXCLUSIVA</span>' +
+      '<span id="nx-nl-popup__eyebrow">OFERTA DE BIENVENIDA</span>' +
       "</div>" +
-      '<h2 id="nx-nl-popup__headline">Descuentos imperdibles cada semana</h2>' +
+      '<h2 id="nx-nl-popup__headline">10% OFF en tu primera compra</h2>' +
       "</div>" +
       "</div>" +
       '<div id="nx-nl-popup__body">' +
-      '<p id="nx-nl-popup__sub">Suscríbete y sé el primero en recibir ofertas exclusivas, nuevos lanzamientos y contenido de entrenamiento.</p>' +
+      '<p id="nx-nl-popup__sub">Suscríbete con tu email y recibe tu código de descuento al instante. Además, serás el primero en conocer ofertas y nuevos lanzamientos.</p>' +
       '<form id="nx-nl-popup__form" novalidate>' +
       '<label class="nx-nl-sr-only" for="nx-nl-popup__email">Correo electrónico</label>' +
       '<input id="nx-nl-popup__email" type="email" name="email" autocomplete="email" inputmode="email" placeholder="tu@correo.com" required />' +
@@ -153,7 +153,12 @@
         await window.NxShopify.ready();
         await window.NxShopify.newsletterSubscribe(val);
         status.classList.add("is-ok");
-        status.textContent = "¡Listo! Revisa tu correo si tu tienda envía confirmación.";
+        status.innerHTML =
+          '¡Listo! Tu código es: <strong style="color:#fff;font-size:15px;letter-spacing:0.1em;">BIENVENIDO10</strong> — se aplicará automáticamente.';
+        // Guardar descuento para aplicar al carrito
+        if (window.NxShopify && window.NxShopify.savePendingDiscount) {
+          window.NxShopify.savePendingDiscount("BIENVENIDO10");
+        }
         email.value = "";
         setTimeout(() => close(root), 2200);
       } catch (err) {
