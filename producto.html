@@ -2640,9 +2640,34 @@
           }
         };
 
+        const syncVariantPrices = (idx) => {
+          const v = p.variants[idx] || p.variants[0];
+          const price = v.priceAmount ?? p.price;
+          const currency = v.currencyCode || priceCurrency;
+          const compare = v.compareAtAmount;
+
+          el("p-price").textContent = nxMoney(price, currency);
+          el("p-once-price").textContent = nxMoney(price, currency);
+          el("p-sub-compare").textContent = nxMoney(price, currency);
+          el("p-sub-price").textContent = nxMoney(price * 0.85, currency);
+          const recPriceEl = document.getElementById("rec-price");
+          if (recPriceEl) recPriceEl.textContent = nxMoney(price, currency);
+
+          // Actualizar badge si hay precio comparado
+          const badge = el("p-badge");
+          if (compare && compare > price) {
+            badge.hidden = false;
+            badge.textContent = "Oferta";
+          } else if (fromShopify) {
+            badge.hidden = true;
+          }
+        };
+
         flavor.addEventListener("change", (e) => {
           // Al cambiar variante, reinicia al primer frame para que concuerde con la imagen principal del sabor.
-          renderGallery(Number(e.target.value), { keepIndex: false });
+          const idx = Number(e.target.value);
+          renderGallery(idx, { keepIndex: false });
+          syncVariantPrices(idx);
           syncBuyState();
           syncRecBarCartState();
         });
